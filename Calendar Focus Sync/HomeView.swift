@@ -50,19 +50,12 @@ struct HomeView: View {
             .cornerRadius(8)
             .overlay(
                 RoundedRectangle(cornerRadius: 8)
-                    .stroke(.white, lineWidth: 0.5)
+                    .stroke(Color(NSColor.textColor), lineWidth: 0.5)
                     .opacity(0.3)
             )
         }
         
     }
-}
-
-enum TimeBefore {
-    case one_minute
-    case two_minutes
-    case five_minutes
-    case ten_minutes
 }
 
 struct HomeViewPreview: PreviewProvider {
