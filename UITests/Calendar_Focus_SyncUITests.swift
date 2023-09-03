@@ -1,10 +1,3 @@
-//
-//  Calendar_Focus_SyncUITests.swift
-//  Calendar Focus SyncUITests
-//
-//  Created by Andrew Glago on 02/09/2023.
-//
-
 import XCTest
 
 final class Calendar_Focus_SyncUITests: XCTestCase {

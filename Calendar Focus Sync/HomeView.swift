@@ -1,10 +1,3 @@
-//
-//  HomeView.swift
-//  Calendar Focus Sync
-//
-//  Created by Andrew Glago on 02/09/2023.
-//
-
 import SwiftUI
 
 struct HomeView: View {

@@ -1,10 +1,3 @@
-//
-//  Calendar_Focus_SyncTests.swift
-//  Calendar Focus SyncTests
-//
-//  Created by Andrew Glago on 02/09/2023.
-//
-
 import XCTest
 @testable import Calendar_Focus_Sync
 
