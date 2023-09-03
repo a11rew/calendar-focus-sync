@@ -40,9 +40,9 @@
 		49AB0D902AA3A8C80047CC2E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49AB0D932AA3A8C80047CC2E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		49AB0D952AA3A8C80047CC2E /* Calendar_Focus_Sync.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Calendar_Focus_Sync.entitlements; sourceTree = "<group>"; };
-		49AB0D9A2AA3A8C80047CC2E /* Calendar Focus SyncTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Calendar Focus SyncTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		49AB0D9A2AA3A8C80047CC2E /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49AB0D9E2AA3A8C80047CC2E /* Calendar_Focus_SyncTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar_Focus_SyncTests.swift; sourceTree = "<group>"; };
-		49AB0DA42AA3A8C80047CC2E /* Calendar Focus SyncUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Calendar Focus SyncUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		49AB0DA42AA3A8C80047CC2E /* UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49AB0DA82AA3A8C80047CC2E /* Calendar_Focus_SyncUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar_Focus_SyncUITests.swift; sourceTree = "<group>"; };
 		49AB0DAA2AA3A8C80047CC2E /* Calendar_Focus_SyncUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar_Focus_SyncUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		49AB0DB92AA3AAA10047CC2E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -78,8 +78,8 @@
 			isa = PBXGroup;
 			children = (
 				49AB0D8B2AA3A8C80047CC2E /* Calendar Focus Sync */,
-				49AB0D9D2AA3A8C80047CC2E /* Calendar Focus SyncTests */,
-				49AB0DA72AA3A8C80047CC2E /* Calendar Focus SyncUITests */,
+				49AB0D9D2AA3A8C80047CC2E /* Tests */,
+				49AB0DA72AA3A8C80047CC2E /* UITests */,
 				49AB0D8A2AA3A8C80047CC2E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,8 +88,8 @@
 			isa = PBXGroup;
 			children = (
 				49AB0D892AA3A8C80047CC2E /* Calendar Focus Sync.app */,
-				49AB0D9A2AA3A8C80047CC2E /* Calendar Focus SyncTests.xctest */,
-				49AB0DA42AA3A8C80047CC2E /* Calendar Focus SyncUITests.xctest */,
+				49AB0D9A2AA3A8C80047CC2E /* Tests.xctest */,
+				49AB0DA42AA3A8C80047CC2E /* UITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -115,21 +115,21 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		49AB0D9D2AA3A8C80047CC2E /* Calendar Focus SyncTests */ = {
+		49AB0D9D2AA3A8C80047CC2E /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				49AB0D9E2AA3A8C80047CC2E /* Calendar_Focus_SyncTests.swift */,
 			);
-			path = "Calendar Focus SyncTests";
+			path = "Tests";
 			sourceTree = "<group>";
 		};
-		49AB0DA72AA3A8C80047CC2E /* Calendar Focus SyncUITests */ = {
+		49AB0DA72AA3A8C80047CC2E /* UITests */ = {
 			isa = PBXGroup;
 			children = (
 				49AB0DA82AA3A8C80047CC2E /* Calendar_Focus_SyncUITests.swift */,
 				49AB0DAA2AA3A8C80047CC2E /* Calendar_Focus_SyncUITestsLaunchTests.swift */,
 			);
-			path = "Calendar Focus SyncUITests";
+			path = "UITests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,9 +152,9 @@
 			productReference = 49AB0D892AA3A8C80047CC2E /* Calendar Focus Sync.app */;
 			productType = "com.apple.product-type.application";
 		};
-		49AB0D992AA3A8C80047CC2E /* Calendar Focus SyncTests */ = {
+		49AB0D992AA3A8C80047CC2E /* Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 49AB0DB12AA3A8C80047CC2E /* Build configuration list for PBXNativeTarget "Calendar Focus SyncTests" */;
+			buildConfigurationList = 49AB0DB12AA3A8C80047CC2E /* Build configuration list for PBXNativeTarget "Tests" */;
 			buildPhases = (
 				49AB0D962AA3A8C80047CC2E /* Sources */,
 				49AB0D972AA3A8C80047CC2E /* Frameworks */,
@@ -165,14 +165,14 @@
 			dependencies = (
 				49AB0D9C2AA3A8C80047CC2E /* PBXTargetDependency */,
 			);
-			name = "Calendar Focus SyncTests";
-			productName = "Calendar Focus SyncTests";
-			productReference = 49AB0D9A2AA3A8C80047CC2E /* Calendar Focus SyncTests.xctest */;
+			name = "Tests";
+			productName = "Tests";
+			productReference = 49AB0D9A2AA3A8C80047CC2E /* Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		49AB0DA32AA3A8C80047CC2E /* Calendar Focus SyncUITests */ = {
+		49AB0DA32AA3A8C80047CC2E /* UITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 49AB0DB42AA3A8C80047CC2E /* Build configuration list for PBXNativeTarget "Calendar Focus SyncUITests" */;
+			buildConfigurationList = 49AB0DB42AA3A8C80047CC2E /* Build configuration list for PBXNativeTarget "UITests" */;
 			buildPhases = (
 				49AB0DA02AA3A8C80047CC2E /* Sources */,
 				49AB0DA12AA3A8C80047CC2E /* Frameworks */,
@@ -183,9 +183,9 @@
 			dependencies = (
 				49AB0DA62AA3A8C80047CC2E /* PBXTargetDependency */,
 			);
-			name = "Calendar Focus SyncUITests";
-			productName = "Calendar Focus SyncUITests";
-			productReference = 49AB0DA42AA3A8C80047CC2E /* Calendar Focus SyncUITests.xctest */;
+			name = "UITests";
+			productName = "UITests";
+			productReference = 49AB0DA42AA3A8C80047CC2E /* UITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -225,8 +225,8 @@
 			projectRoot = "";
 			targets = (
 				49AB0D882AA3A8C80047CC2E /* Calendar Focus Sync */,
-				49AB0D992AA3A8C80047CC2E /* Calendar Focus SyncTests */,
-				49AB0DA32AA3A8C80047CC2E /* Calendar Focus SyncUITests */,
+				49AB0D992AA3A8C80047CC2E /* Tests */,
+				49AB0DA32AA3A8C80047CC2E /* UITests */,
 			);
 		};
 /* End PBXProject section */
@@ -553,7 +553,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		49AB0DB12AA3A8C80047CC2E /* Build configuration list for PBXNativeTarget "Calendar Focus SyncTests" */ = {
+		49AB0DB12AA3A8C80047CC2E /* Build configuration list for PBXNativeTarget "Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				49AB0DB22AA3A8C80047CC2E /* Debug */,
@@ -562,7 +562,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		49AB0DB42AA3A8C80047CC2E /* Build configuration list for PBXNativeTarget "Calendar Focus SyncUITests" */ = {
+		49AB0DB42AA3A8C80047CC2E /* Build configuration list for PBXNativeTarget "UITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				49AB0DB52AA3A8C80047CC2E /* Debug */,
