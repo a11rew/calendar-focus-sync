@@ -50,7 +50,7 @@
 		49AB0DAA2AA3A8C80047CC2E /* Calendar_Focus_SyncUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar_Focus_SyncUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		49AB0DB92AA3AAA10047CC2E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		49AB0DBB2AA4837E0047CC2E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		49C21A122AA5DE8D0063271F /* Calendar-Focus-Sync-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Calendar-Focus-Sync-Info.plist"; sourceTree = SOURCE_ROOT; };
+		49C21A122AA5DE8D0063271F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
 		49C21A152AA5E3320063271F /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,7 +117,7 @@
 				49C21A172AA5E3390063271F /* State */,
 				49AB0D902AA3A8C80047CC2E /* Assets.xcassets */,
 				49AB0D952AA3A8C80047CC2E /* Calendar_Focus_Sync.entitlements */,
-				49C21A122AA5DE8D0063271F /* Calendar-Focus-Sync-Info.plist */,
+				49C21A122AA5DE8D0063271F /* Info.plist */,
 				49AB0D922AA3A8C80047CC2E /* Preview Content */,
 			);
 			path = "Calendar Focus Sync";
