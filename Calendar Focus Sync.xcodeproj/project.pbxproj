@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4907ED502AA5C0EF000A566E /* CalendarSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4907ED4F2AA5C0EF000A566E /* CalendarSync.swift */; };
 		49AB0D8D2AA3A8C80047CC2E /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AB0D8C2AA3A8C80047CC2E /* App.swift */; };
 		49AB0D912AA3A8C80047CC2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49AB0D902AA3A8C80047CC2E /* Assets.xcassets */; };
 		49AB0D942AA3A8C80047CC2E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49AB0D932AA3A8C80047CC2E /* Preview Assets.xcassets */; };
@@ -15,6 +16,7 @@
 		49AB0DAB2AA3A8C80047CC2E /* Calendar_Focus_SyncUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AB0DAA2AA3A8C80047CC2E /* Calendar_Focus_SyncUITestsLaunchTests.swift */; };
 		49AB0DBA2AA3AAA10047CC2E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AB0DB92AA3AAA10047CC2E /* HomeView.swift */; };
 		49AB0DBC2AA4837E0047CC2E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AB0DBB2AA4837E0047CC2E /* Constants.swift */; };
+		49C21A162AA5E3320063271F /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C21A152AA5E3320063271F /* UserPreferences.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,18 +37,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4907ED4F2AA5C0EF000A566E /* CalendarSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSync.swift; sourceTree = "<group>"; };
 		49AB0D892AA3A8C80047CC2E /* Calendar Focus Sync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Calendar Focus Sync.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49AB0D8C2AA3A8C80047CC2E /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		49AB0D902AA3A8C80047CC2E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49AB0D932AA3A8C80047CC2E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		49AB0D952AA3A8C80047CC2E /* Calendar_Focus_Sync.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Calendar_Focus_Sync.entitlements; sourceTree = "<group>"; };
-		49AB0D9A2AA3A8C80047CC2E /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		49AB0D9A2AA3A8C80047CC2E /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		49AB0D9E2AA3A8C80047CC2E /* Calendar_Focus_SyncTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar_Focus_SyncTests.swift; sourceTree = "<group>"; };
-		49AB0DA42AA3A8C80047CC2E /* UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		49AB0DA42AA3A8C80047CC2E /* UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		49AB0DA82AA3A8C80047CC2E /* Calendar_Focus_SyncUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar_Focus_SyncUITests.swift; sourceTree = "<group>"; };
 		49AB0DAA2AA3A8C80047CC2E /* Calendar_Focus_SyncUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar_Focus_SyncUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		49AB0DB92AA3AAA10047CC2E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		49AB0DBB2AA4837E0047CC2E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		49C21A122AA5DE8D0063271F /* Calendar-Focus-Sync-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Calendar-Focus-Sync-Info.plist"; sourceTree = SOURCE_ROOT; };
+		49C21A152AA5E3320063271F /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +79,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4907ED4E2AA5C0DA000A566E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				4907ED4F2AA5C0EF000A566E /* CalendarSync.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		49AB0D802AA3A8C80047CC2E = {
 			isa = PBXGroup;
 			children = (
@@ -98,10 +111,13 @@
 			isa = PBXGroup;
 			children = (
 				49AB0D8C2AA3A8C80047CC2E /* App.swift */,
-				49AB0DB92AA3AAA10047CC2E /* HomeView.swift */,
 				49AB0DBB2AA4837E0047CC2E /* Constants.swift */,
+				49C21A142AA5E2E10063271F /* Views */,
+				4907ED4E2AA5C0DA000A566E /* Services */,
+				49C21A172AA5E3390063271F /* State */,
 				49AB0D902AA3A8C80047CC2E /* Assets.xcassets */,
 				49AB0D952AA3A8C80047CC2E /* Calendar_Focus_Sync.entitlements */,
+				49C21A122AA5DE8D0063271F /* Calendar-Focus-Sync-Info.plist */,
 				49AB0D922AA3A8C80047CC2E /* Preview Content */,
 			);
 			path = "Calendar Focus Sync";
@@ -120,7 +136,7 @@
 			children = (
 				49AB0D9E2AA3A8C80047CC2E /* Calendar_Focus_SyncTests.swift */,
 			);
-			path = "Tests";
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		49AB0DA72AA3A8C80047CC2E /* UITests */ = {
@@ -129,7 +145,23 @@
 				49AB0DA82AA3A8C80047CC2E /* Calendar_Focus_SyncUITests.swift */,
 				49AB0DAA2AA3A8C80047CC2E /* Calendar_Focus_SyncUITestsLaunchTests.swift */,
 			);
-			path = "UITests";
+			path = UITests;
+			sourceTree = "<group>";
+		};
+		49C21A142AA5E2E10063271F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				49AB0DB92AA3AAA10047CC2E /* HomeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		49C21A172AA5E3390063271F /* State */ = {
+			isa = PBXGroup;
+			children = (
+				49C21A152AA5E3320063271F /* UserPreferences.swift */,
+			);
+			path = State;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,8 +197,8 @@
 			dependencies = (
 				49AB0D9C2AA3A8C80047CC2E /* PBXTargetDependency */,
 			);
-			name = "Tests";
-			productName = "Tests";
+			name = Tests;
+			productName = Tests;
 			productReference = 49AB0D9A2AA3A8C80047CC2E /* Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -183,8 +215,8 @@
 			dependencies = (
 				49AB0DA62AA3A8C80047CC2E /* PBXTargetDependency */,
 			);
-			name = "UITests";
-			productName = "UITests";
+			name = UITests;
+			productName = UITests;
 			productReference = 49AB0DA42AA3A8C80047CC2E /* UITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
@@ -262,6 +294,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49C21A162AA5E3320063271F /* UserPreferences.swift in Sources */,
+				4907ED502AA5C0EF000A566E /* CalendarSync.swift in Sources */,
 				49AB0DBA2AA3AAA10047CC2E /* HomeView.swift in Sources */,
 				49AB0D8D2AA3A8C80047CC2E /* App.swift in Sources */,
 				49AB0DBC2AA4837E0047CC2E /* Constants.swift in Sources */,
@@ -426,6 +460,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Calendar Focus Sync/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Calendar-Focus-Sync-Info.plist";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "Calendar Focus Sync needs access to your calendar to know when to activate Focus Modes";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -451,6 +487,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Calendar Focus Sync/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Calendar-Focus-Sync-Info.plist";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "Calendar Focus Sync needs access to your calendar to know when to activate Focus Modes";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

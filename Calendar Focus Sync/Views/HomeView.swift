@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State private var calendarAccess = checkCalendarEventPermissions()
     @State private var launchOnLogin = true;
     @State private var selectedPriorTimeBuffer: TimeBefore = TimeBefore.one_minute
     
@@ -8,9 +9,38 @@ struct HomeView: View {
         VStack(alignment: .leading, spacing: 20) {
             Text("Automatically enter focus modes when a calendar event begins")
             
+            calendarConfig
+            
             generalConfig
         }
         .padding(16)
+    }
+    
+    @ViewBuilder
+    private var calendarConfig: some View {
+        VStack(alignment: .leading) {
+            Text("Calendars")
+            
+            VStack {
+                HStack {
+                    Text("Calendar")
+                    Spacer()
+                    
+                    Button(calendarAccess == .authorized ? "Granted" : "Grant Calendar Access") {
+                        // Sync call to request permission
+                        requestCalendarEventPermissions()
+                    }.disabled(calendarAccess == .authorized)
+                }
+            }
+            .padding(8)
+            .cornerRadius(8)
+            .overlay(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(Color(NSColor.textColor), lineWidth: 0.5)
+                    .opacity(0.3)
+            )
+        }
+        
     }
     
     @ViewBuilder
