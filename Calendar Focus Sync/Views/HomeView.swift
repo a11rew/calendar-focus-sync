@@ -1,9 +1,8 @@
 import SwiftUI
+import EventKit
 
 struct HomeView: View {
-    @State private var calendarAccess = checkCalendarEventPermissions()
-    @State private var launchOnLogin = true;
-    @State private var selectedPriorTimeBuffer: TimeBefore = TimeBefore.one_minute
+    @EnvironmentObject var userPreferences: UserPreferences
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
@@ -26,10 +25,12 @@ struct HomeView: View {
                     Text("Calendar")
                     Spacer()
                     
-                    Button(calendarAccess == .authorized ? "Granted" : "Grant Calendar Access") {
-                        // Sync call to request permission
-                        requestCalendarEventPermissions()
-                    }.disabled(calendarAccess == .authorized)
+                    Button(userPreferences.nativeCalendarAccess == EKAuthorizationStatus.authorized.rawValue
+                           ? "Granted" : "Grant Calendar Access"
+                    ) {
+                        userPreferences.requestCalendarEventPermissions()
+                    }
+                    .disabled(userPreferences.nativeCalendarAccess == EKAuthorizationStatus.authorized.rawValue)
                 }
             }
             .padding(8)
@@ -52,7 +53,7 @@ struct HomeView: View {
                 HStack {
                     Text("Launch at login")
                     Spacer()
-                    Toggle("", isOn: $launchOnLogin)
+                    Toggle("", isOn: $userPreferences.launchOnLogin)
                         .toggleStyle(.switch)
                 }
                 
@@ -61,11 +62,11 @@ struct HomeView: View {
                 HStack {
                     Text("Enter Focus Mode how long before")
                     Spacer()
-                    Picker("", selection: $selectedPriorTimeBuffer) {
-                        Text("1 minute").tag(TimeBefore.one_minute)
-                        Text("2 minutes").tag(TimeBefore.two_minutes)
-                        Text("5 minutes").tag(TimeBefore.five_minutes)
-                        Text("10 minutes").tag(TimeBefore.ten_minutes)
+                    Picker("", selection: $userPreferences.selectedPriorTimeBuffer) {
+                        Text("1 minute").tag(TimeBefore.one_minute.rawValue)
+                        Text("2 minutes").tag(TimeBefore.two_minutes.rawValue)
+                        Text("5 minutes").tag(TimeBefore.five_minutes.rawValue)
+                        Text("10 minutes").tag(TimeBefore.ten_minutes.rawValue)
                     }.frame(maxWidth: 140)
                 }
             }
@@ -85,6 +86,7 @@ struct HomeView: View {
 struct HomeViewPreview: PreviewProvider {
     static var previews: some View {
         HomeView()
+            .environmentObject(UserPreferences())
     }
 }
 #endif

@@ -2,10 +2,6 @@ import EventKit
 
 let store = EKEventStore()
 
-func checkCalendarEventPermissions() -> EKAuthorizationStatus {
-    return EKEventStore.authorizationStatus(for: .event)
-}
-
 func requestCalendarEventPermissions() {
     // Request access to event store
     store.requestAccess(to: .event, completion: onCalendarEventPermissionsGranted)
