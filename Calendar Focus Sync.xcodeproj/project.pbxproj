@@ -17,6 +17,7 @@
 		49AB0DBA2AA3AAA10047CC2E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AB0DB92AA3AAA10047CC2E /* HomeView.swift */; };
 		49AB0DBC2AA4837E0047CC2E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AB0DBB2AA4837E0047CC2E /* Constants.swift */; };
 		49B74B2A2AA8640E00C6A853 /* SyncOrchestrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B74B292AA8640E00C6A853 /* SyncOrchestrator.swift */; };
+		49B74B2D2AA8828400C6A853 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 49B74B2C2AA8828400C6A853 /* LaunchAtLogin */; };
 		49C21A162AA5E3320063271F /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C21A152AA5E3320063271F /* UserPreferences.swift */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49B74B2D2AA8828400C6A853 /* LaunchAtLogin in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,6 +185,9 @@
 			dependencies = (
 			);
 			name = "Calendar Focus Sync";
+			packageProductDependencies = (
+				49B74B2C2AA8828400C6A853 /* LaunchAtLogin */,
+			);
 			productName = "Calendar Focus Sync";
 			productReference = 49AB0D892AA3A8C80047CC2E /* Calendar Focus Sync.app */;
 			productType = "com.apple.product-type.application";
@@ -255,6 +260,9 @@
 				Base,
 			);
 			mainGroup = 49AB0D802AA3A8C80047CC2E;
+			packageReferences = (
+				49B74B2B2AA8828400C6A853 /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */,
+			);
 			productRefGroup = 49AB0D8A2AA3A8C80047CC2E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -614,6 +622,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		49B74B2B2AA8828400C6A853 /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin-Modern";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		49B74B2C2AA8828400C6A853 /* LaunchAtLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 49B74B2B2AA8828400C6A853 /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */;
+			productName = LaunchAtLogin;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 49AB0D812AA3A8C80047CC2E /* Project object */;
 }

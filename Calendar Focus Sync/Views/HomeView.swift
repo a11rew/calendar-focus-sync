@@ -1,5 +1,6 @@
 import SwiftUI
 import EventKit
+import LaunchAtLogin
 
 struct HomeView: View {
     @EnvironmentObject var userPreferences: UserPreferences
@@ -53,8 +54,7 @@ struct HomeView: View {
                 HStack {
                     Text("Launch at login")
                     Spacer()
-                    Toggle("", isOn: $userPreferences.launchOnLogin)
-                        .toggleStyle(.switch)
+                    LaunchAtLogin.Toggle("").toggleStyle(.switch)
                 }
                 
                 Divider()
