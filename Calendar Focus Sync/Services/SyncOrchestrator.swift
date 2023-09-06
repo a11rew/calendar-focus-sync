@@ -23,7 +23,7 @@ struct SyncFilter {
 let SYNC_DAYS_OUT = 3
 
 let defaultSyncFilter = SyncFilter(
-    startDate: Date(), // Only care about events that haven't begin
+    startDate: Date(), // Only care about events that haven't begun
     endDate: Date().addingTimeInterval(TimeInterval(60 * 60 * 24 * SYNC_DAYS_OUT)),
     calendars: []
 )

@@ -6,12 +6,29 @@ struct AppMain: App {
     @StateObject var userPreferences = UserPreferences.shared
     
     var body: some Scene {
-        WindowGroup {
+        Settings {
             HomeView()
                 .environmentObject(userPreferences)
             
             Spacer()
         }
+        
+        MenuBarExtra {
+            Text("Calendar Focus Sync").disabled(true)
+            
+            Button("Settings") {
+                NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)
+            }
+            
+            Divider()
+        
+            Button("Quit") {
+                NSApplication.shared.terminate(self)
+            }
+        } label: {
+            Image(systemName: "calendar")
+        }
+    
     }
 }
 
