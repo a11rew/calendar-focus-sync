@@ -28,7 +28,7 @@ struct HomeView: View {
                     Button(userPreferences.nativeCalendarAccess == EKAuthorizationStatus.authorized.rawValue
                            ? "Granted" : "Grant Calendar Access"
                     ) {
-                        userPreferences.requestCalendarEventPermissions()
+                        requestNativeCalendarEventPermissions()
                     }
                     .disabled(userPreferences.nativeCalendarAccess == EKAuthorizationStatus.authorized.rawValue)
                 }

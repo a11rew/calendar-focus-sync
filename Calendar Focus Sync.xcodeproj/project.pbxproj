@@ -16,6 +16,7 @@
 		49AB0DAB2AA3A8C80047CC2E /* Calendar_Focus_SyncUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AB0DAA2AA3A8C80047CC2E /* Calendar_Focus_SyncUITestsLaunchTests.swift */; };
 		49AB0DBA2AA3AAA10047CC2E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AB0DB92AA3AAA10047CC2E /* HomeView.swift */; };
 		49AB0DBC2AA4837E0047CC2E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AB0DBB2AA4837E0047CC2E /* Constants.swift */; };
+		49B74B2A2AA8640E00C6A853 /* SyncOrchestrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B74B292AA8640E00C6A853 /* SyncOrchestrator.swift */; };
 		49C21A162AA5E3320063271F /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C21A152AA5E3320063271F /* UserPreferences.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,7 @@
 		49AB0DAA2AA3A8C80047CC2E /* Calendar_Focus_SyncUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar_Focus_SyncUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		49AB0DB92AA3AAA10047CC2E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		49AB0DBB2AA4837E0047CC2E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		49B74B292AA8640E00C6A853 /* SyncOrchestrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncOrchestrator.swift; sourceTree = "<group>"; };
 		49C21A122AA5DE8D0063271F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49C21A152AA5E3320063271F /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				4907ED4F2AA5C0EF000A566E /* CalendarSync.swift */,
+				49B74B292AA8640E00C6A853 /* SyncOrchestrator.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49B74B2A2AA8640E00C6A853 /* SyncOrchestrator.swift in Sources */,
 				49C21A162AA5E3320063271F /* UserPreferences.swift in Sources */,
 				4907ED502AA5C0EF000A566E /* CalendarSync.swift in Sources */,
 				49AB0DBA2AA3AAA10047CC2E /* HomeView.swift in Sources */,

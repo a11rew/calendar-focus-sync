@@ -4,7 +4,15 @@
 <dict>
 	<key>NSServices</key>
 	<array>
-		<dict/>
+		<dict>
+			<key>NSMessage</key>
+			<string></string>
+			<key>NSMenuItem</key>
+			<dict>
+				<key>default</key>
+				<string></string>
+			</dict>
+		</dict>
 	</array>
 </dict>
 </plist>
