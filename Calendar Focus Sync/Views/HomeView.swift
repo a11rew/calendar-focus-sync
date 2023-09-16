@@ -4,6 +4,7 @@ import LaunchAtLogin
 
 struct HomeView: View {
     @EnvironmentObject var userPreferences: UserPreferences
+    @Environment(\.openURL) private var openURL
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {

@@ -18,6 +18,9 @@
 		49AB0DBC2AA4837E0047CC2E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AB0DBB2AA4837E0047CC2E /* Constants.swift */; };
 		49B74B2A2AA8640E00C6A853 /* SyncOrchestrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B74B292AA8640E00C6A853 /* SyncOrchestrator.swift */; };
 		49B74B2D2AA8828400C6A853 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 49B74B2C2AA8828400C6A853 /* LaunchAtLogin */; };
+		49B74B2F2AADEB4200C6A853 /* Focus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B74B2E2AADEB4200C6A853 /* Focus.swift */; };
+		49B74B322AB1DF7400C6A853 /* calendar-focus-sync.shortcut in Resources */ = {isa = PBXBuildFile; fileRef = 49B74B312AB1DF7400C6A853 /* calendar-focus-sync.shortcut */; };
+		49B74B352AB1E05200C6A853 /* Shell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B74B342AB1E05200C6A853 /* Shell.swift */; };
 		49C21A162AA5E3320063271F /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C21A152AA5E3320063271F /* UserPreferences.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +56,9 @@
 		49AB0DB92AA3AAA10047CC2E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		49AB0DBB2AA4837E0047CC2E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		49B74B292AA8640E00C6A853 /* SyncOrchestrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncOrchestrator.swift; sourceTree = "<group>"; };
+		49B74B2E2AADEB4200C6A853 /* Focus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Focus.swift; sourceTree = "<group>"; };
+		49B74B312AB1DF7400C6A853 /* calendar-focus-sync.shortcut */ = {isa = PBXFileReference; lastKnownFileType = file; path = "calendar-focus-sync.shortcut"; sourceTree = "<group>"; };
+		49B74B342AB1E05200C6A853 /* Shell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shell.swift; sourceTree = "<group>"; };
 		49C21A122AA5DE8D0063271F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49C21A152AA5E3320063271F /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -88,6 +94,7 @@
 			children = (
 				4907ED4F2AA5C0EF000A566E /* CalendarSync.swift */,
 				49B74B292AA8640E00C6A853 /* SyncOrchestrator.swift */,
+				49B74B2E2AADEB4200C6A853 /* Focus.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -120,6 +127,8 @@
 				49C21A142AA5E2E10063271F /* Views */,
 				4907ED4E2AA5C0DA000A566E /* Services */,
 				49C21A172AA5E3390063271F /* State */,
+				49B74B302AB0CE4800C6A853 /* Resources */,
+				49B74B332AB1E03000C6A853 /* Helpers */,
 				49AB0D902AA3A8C80047CC2E /* Assets.xcassets */,
 				49AB0D952AA3A8C80047CC2E /* Calendar_Focus_Sync.entitlements */,
 				49C21A122AA5DE8D0063271F /* Info.plist */,
@@ -151,6 +160,22 @@
 				49AB0DAA2AA3A8C80047CC2E /* Calendar_Focus_SyncUITestsLaunchTests.swift */,
 			);
 			path = UITests;
+			sourceTree = "<group>";
+		};
+		49B74B302AB0CE4800C6A853 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				49B74B312AB1DF7400C6A853 /* calendar-focus-sync.shortcut */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		49B74B332AB1E03000C6A853 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				49B74B342AB1E05200C6A853 /* Shell.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		49C21A142AA5E2E10063271F /* Views */ = {
@@ -280,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49AB0D942AA3A8C80047CC2E /* Preview Assets.xcassets in Resources */,
+				49B74B322AB1DF7400C6A853 /* calendar-focus-sync.shortcut in Resources */,
 				49AB0D912AA3A8C80047CC2E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -308,8 +334,10 @@
 				49B74B2A2AA8640E00C6A853 /* SyncOrchestrator.swift in Sources */,
 				49C21A162AA5E3320063271F /* UserPreferences.swift in Sources */,
 				4907ED502AA5C0EF000A566E /* CalendarSync.swift in Sources */,
+				49B74B2F2AADEB4200C6A853 /* Focus.swift in Sources */,
 				49AB0DBA2AA3AAA10047CC2E /* HomeView.swift in Sources */,
 				49AB0D8D2AA3A8C80047CC2E /* App.swift in Sources */,
+				49B74B352AB1E05200C6A853 /* Shell.swift in Sources */,
 				49AB0DBC2AA4837E0047CC2E /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
