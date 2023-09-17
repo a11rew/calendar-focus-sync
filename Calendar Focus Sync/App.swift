@@ -4,11 +4,13 @@ import SwiftUI
 struct AppMain: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
     @StateObject var userPreferences = UserPreferences.shared
+    @StateObject var appState = AppState.shared
     
     var body: some Scene {
         Settings {
             HomeView()
                 .environmentObject(userPreferences)
+                .environmentObject(appState)
             
             Spacer()
         }

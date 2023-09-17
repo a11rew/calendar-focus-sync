@@ -4,12 +4,17 @@ import LaunchAtLogin
 
 struct HomeView: View {
     @EnvironmentObject var userPreferences: UserPreferences
+    @EnvironmentObject var appState: AppState
     @Environment(\.openURL) private var openURL
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             Text("Automatically enter focus modes when a calendar event begins")
             
+            if !appState.isShortCutInstalled {
+                shortcutInstallNotice
+            }
+                        
             calendarConfig
             
             generalConfig
@@ -43,7 +48,28 @@ struct HomeView: View {
                     .opacity(0.3)
             )
         }
-        
+    }
+    
+    @ViewBuilder
+    private var shortcutInstallNotice: some View {
+        HStack {
+            Image(systemName: "exclamationmark.triangle.fill")
+                .foregroundColor(.yellow)
+                .font(.system(size: 18))
+                .padding(.trailing, 4)
+            
+            Text("Shortcut not installed. This is required for Calendar Focus Sync to work.")
+                .padding(.vertical, 6)
+            
+            Spacer()
+                
+            Button("Install") {
+                installCFSShortcut()
+            }
+        }
+        .padding(8)
+        .background(Color.yellow.opacity(0.3))
+        .cornerRadius(8)
     }
     
     @ViewBuilder
@@ -79,7 +105,6 @@ struct HomeView: View {
                     .opacity(0.3)
             )
         }
-        
     }
 }
 
@@ -88,6 +113,7 @@ struct HomeViewPreview: PreviewProvider {
     static var previews: some View {
         HomeView()
             .environmentObject(UserPreferences())
+            .environmentObject(AppState())
     }
 }
 #endif

@@ -10,21 +10,12 @@ func getInstalledShortcuts() -> [String] {
     return shortcuts.components(separatedBy: "\n")
 }
 
-func ensureCFSShortcutIsInstalled() -> Bool {
+func isShortcutInstalled() -> Bool {
     let installedShortcuts = getInstalledShortcuts()
     
-    if installedShortcuts.contains(SHORTCUT_NAME) {
-        return true
-    }
-    
-    // Try to install the shortcut
-    installCFSShortcut()
-    
-    // Check if it worked
-    let installedShortcutsAfter = getInstalledShortcuts()
-    
-    return installedShortcutsAfter.contains(SHORTCUT_NAME)
+    return installedShortcuts.contains(SHORTCUT_NAME)
 }
+
 
 func installCFSShortcut() {
     guard let pathToShortcut = Bundle.main.url(forResource: SHORTCUT_NAME, withExtension: "shortcut") else {
@@ -33,10 +24,12 @@ func installCFSShortcut() {
     }
     
     runShellCommand("open \(pathToShortcut)")
+    
+    AppState.shared.isShortCutInstalled = true
 }
 
 func runCFSShortcut(_ args: String) {
-    guard ensureCFSShortcutIsInstalled() else {
+    guard isShortcutInstalled() else {
         print(MISSING_SHORTCUT_MESSAGE) // TODO: Alert user
         return
     }
