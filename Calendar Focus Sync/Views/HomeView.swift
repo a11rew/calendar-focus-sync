@@ -90,10 +90,10 @@ struct HomeView: View {
                     Text("Enter Focus Mode how long before")
                     Spacer()
                     Picker("", selection: $userPreferences.selectedPriorTimeBuffer) {
-                        Text("1 minute").tag(TimeBefore.one_minute.rawValue)
-                        Text("2 minutes").tag(TimeBefore.two_minutes.rawValue)
-                        Text("5 minutes").tag(TimeBefore.five_minutes.rawValue)
-                        Text("10 minutes").tag(TimeBefore.ten_minutes.rawValue)
+                        Text("1 minute").tag(TimeBefore.one_minute)
+                        Text("2 minutes").tag(TimeBefore.two_minutes)
+                        Text("5 minutes").tag(TimeBefore.five_minutes)
+                        Text("10 minutes").tag(TimeBefore.ten_minutes)
                     }.frame(maxWidth: 140)
                 }
             }

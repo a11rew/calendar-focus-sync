@@ -24,6 +24,7 @@
 		49C21A162AA5E3320063271F /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C21A152AA5E3320063271F /* UserPreferences.swift */; };
 		49FB5DF12AB72174009D832C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FB5DF02AB72174009D832C /* AppState.swift */; };
 		49FB5DF32AB72944009D832C /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FB5DF22AB72944009D832C /* Color.swift */; };
+		49FB5DF52AB73060009D832C /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FB5DF42AB73060009D832C /* Time.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		49C21A152AA5E3320063271F /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		49FB5DF02AB72174009D832C /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		49FB5DF22AB72944009D832C /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		49FB5DF42AB73060009D832C /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +181,7 @@
 			children = (
 				49B74B342AB1E05200C6A853 /* Shell.swift */,
 				49FB5DF22AB72944009D832C /* Color.swift */,
+				49FB5DF42AB73060009D832C /* Time.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 			files = (
 				49FB5DF12AB72174009D832C /* AppState.swift in Sources */,
 				49B74B2A2AA8640E00C6A853 /* SyncOrchestrator.swift in Sources */,
+				49FB5DF52AB73060009D832C /* Time.swift in Sources */,
 				49C21A162AA5E3320063271F /* UserPreferences.swift in Sources */,
 				49FB5DF32AB72944009D832C /* Color.swift in Sources */,
 				4907ED502AA5C0EF000A566E /* CalendarSync.swift in Sources */,

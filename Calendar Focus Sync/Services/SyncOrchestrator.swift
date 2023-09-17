@@ -1,4 +1,5 @@
 import EventKit
+import Foundation
 
 protocol CalendarSyncer {
     var identifier: String { get }
@@ -20,6 +21,8 @@ struct SyncFilter {
     let calendars: [String] // ids of calendars to sync
 }
 
+typealias TimerContext = ["event": CalendarEvent]
+
 let SYNC_DAYS_OUT = 3
 
 let defaultSyncFilter = SyncFilter(
@@ -32,6 +35,9 @@ class SyncOrchestrator {
     private var events: [CalendarEvent]
     private let userPreferences: UserPreferences
     private let calendarSyncHandlers: [CalendarSyncer]
+    
+    private var activeFocusModeTimers: [String: Timer] = [:]
+    
     
     init(userPreferences: UserPreferences, syncHandlers: [CalendarSyncer]) {
         self.events = []
@@ -78,5 +84,33 @@ class SyncOrchestrator {
                 }
             }
         }
+    }
+    
+    func scheduleFocusModeActivation(event: CalendarEvent) {
+        // Schedules focus mode activation for a particular time
+        let eventStartDate = event.startDate
+        let eventDuration = Int(event.endDate.timeIntervalSince(eventStartDate))
+        
+        let timeBuffer = userPreferences.selectedPriorTimeBuffer
+        let triggerDelta = timeBuffer * -1
+        
+        let triggerDate = eventStartDate.addingTimeInterval(TimeInterval(triggerDelta))
+     
+        // Schedule timer to be ran
+        
+        // Check if there's an active timer for this event
+        if let activeTimer = activeFocusModeTimers[event.id] {
+            // Cancel it if duration and start date different
+            
+        }
+
+        let timerContext: TimerContext = ["event": event]
+        let timer = Timer.scheduledTimer(withTimeInterval: triggerDate.timeIntervalSinceNow, repeats: false,
+            block: { _ in
+                enableFocusMode(duration: eventDuration)
+            }
+        )
+        
+        activeFocusModeTimers[event.id] = timer
     }
 }
