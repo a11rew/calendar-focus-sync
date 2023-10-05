@@ -21,7 +21,7 @@ struct SyncFilter {
     let calendars: [String] // ids of calendars to sync
 }
 
-typealias TimerContext = ["event": CalendarEvent]
+//typealias TimerContext = ["event": CalendarEvent]
 
 let SYNC_DAYS_OUT = 3
 
@@ -104,7 +104,7 @@ class SyncOrchestrator {
             
         }
 
-        let timerContext: TimerContext = ["event": event]
+        let timerContext = ["event": event]
         let timer = Timer.scheduledTimer(withTimeInterval: triggerDate.timeIntervalSinceNow, repeats: false,
             block: { _ in
                 enableFocusMode(duration: eventDuration)

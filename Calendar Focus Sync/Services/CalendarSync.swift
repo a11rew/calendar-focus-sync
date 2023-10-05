@@ -2,8 +2,8 @@ import EventKit
 
 let store = EKEventStore()
 
-func requestNativeCalendarEventPermissions(closure: Optional<(Bool) -> Void> = nil) {
-    store.requestAccess(to: .event, completion: { (isGranted: Bool, error: Error?) -> Void in
+func requestNativeCalendarEventPermissions() {
+    store.requestFullAccessToEvents(completion: { (isGranted: Bool, error: Error?) -> Void in
         if error != nil || !isGranted {
             if let closure = closure {
                 closure(false)
@@ -11,7 +11,7 @@ func requestNativeCalendarEventPermissions(closure: Optional<(Bool) -> Void> = n
         }
         
         DispatchQueue.main.async {
-            UserPreferences.shared.nativeCalendarAccess = EKAuthorizationStatus.authorized.rawValue
+            UserPreferences.shared.nativeCalendarAccess = EKAuthorizationStatus.fullAccess.rawValue
         }
         
         if let closure = closure {
@@ -33,7 +33,7 @@ class NativeCalendarSync: CalendarSyncer {
         let status = EKEventStore.authorizationStatus(for: .event)
         
         // Silently exit if permissions not granted
-        if status != .authorized {
+        if status != .fullAccess {
             return []
         }
         
@@ -56,10 +56,7 @@ class NativeCalendarSync: CalendarSyncer {
     }
     
     func setupPermissions() async -> Bool {
-        return await withCheckedContinuation { continuation in
-            requestNativeCalendarEventPermissions { success in
-                continuation.resume(returning: success)
-            }
+         requestNativeCalendarEventPermissions()
         }
     }
 }
