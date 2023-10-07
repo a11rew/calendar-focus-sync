@@ -2,23 +2,27 @@ import EventKit
 
 let store = EKEventStore()
 
-func requestNativeCalendarEventPermissions() {
-    store.requestFullAccessToEvents(completion: { (isGranted: Bool, error: Error?) -> Void in
-        if error != nil || !isGranted {
-            if let closure = closure {
-                closure(false)
-            }
-        }
-        
+@discardableResult
+func requestNativeCalendarEventPermissions() async throws -> Bool {
+    let status = EKEventStore.authorizationStatus(for: .event)
+    var isGranted = false
+
+    switch status {
+        case .fullAccess:
+            isGranted = true
+        default:
+            isGranted = try await store.requestFullAccessToEvents()
+    }
+    
+    if isGranted {
         DispatchQueue.main.async {
-            UserPreferences.shared.nativeCalendarAccess = EKAuthorizationStatus.fullAccess.rawValue
+            UserPreferences.shared.nativeCalendarAccessGranted = true
         }
-        
-        if let closure = closure {
-            closure(true)
-        }
-    })
+    }
+    
+    return isGranted
 }
+
 
 // TODO: Register event store change listener
 //    NotificationCenter.default.addObserver(self, selector: Selector("storeChanged:"), name: .EKEventStoreChanged, object: store)
@@ -56,7 +60,12 @@ class NativeCalendarSync: CalendarSyncer {
     }
     
     func setupPermissions() async -> Bool {
-         requestNativeCalendarEventPermissions()
+        do {
+            return try await requestNativeCalendarEventPermissions()
+        } catch {
+            print("Failed to request calendar permissions: \(error)")
         }
+        
+        return false
     }
 }

@@ -17,10 +17,9 @@ struct AppMain: App {
         
         MenuBarExtra {
             Text("Calendar Focus Sync").disabled(true)
-            
-            Button("Settings") {
-                NSApplication.shared.activate(ignoringOtherApps: true)
-                NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)
+                      
+            SettingsLink {
+                Text("Settings")
             }
             
             Divider()

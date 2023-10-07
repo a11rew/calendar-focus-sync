@@ -21,7 +21,7 @@ struct SyncFilter {
     let calendars: [String] // ids of calendars to sync
 }
 
-//typealias TimerContext = ["event": CalendarEvent]
+// typealias TimerContext = ["event": CalendarEvent]
 
 let SYNC_DAYS_OUT = 3
 
