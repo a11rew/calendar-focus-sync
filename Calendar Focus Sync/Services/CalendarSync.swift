@@ -6,14 +6,14 @@ let store = EKEventStore()
 func requestNativeCalendarEventPermissions() async throws -> Bool {
     let status = EKEventStore.authorizationStatus(for: .event)
     var isGranted = false
-
+    
     switch status {
         case .fullAccess:
             isGranted = true
         default:
             isGranted = try await store.requestFullAccessToEvents()
     }
-    
+
     if isGranted {
         DispatchQueue.main.async {
             UserPreferences.shared.nativeCalendarAccessGranted = true

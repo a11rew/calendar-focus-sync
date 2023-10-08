@@ -2,19 +2,9 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSCalendarsFullAccessUsageDescription</key>
+	<string>Calendar Focus Sync needs access to your calendar to know when to activate Focus Modes</string>
 	<key>LSUIElement</key>
 	<true/>
-	<key>NSServices</key>
-	<array>
-		<dict>
-			<key>NSMessage</key>
-			<string></string>
-			<key>NSMenuItem</key>
-			<dict>
-				<key>default</key>
-				<string></string>
-			</dict>
-		</dict>
-	</array>
 </dict>
 </plist>
