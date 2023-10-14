@@ -46,11 +46,10 @@ class SyncOrchestrator {
         self.calendarSyncHandlers = syncHandlers
     }
     
+    @MainActor
     func go() {
         Task {
             await syncCalendarEvents()
-            
-            print("Done syncing, events: \(self.events)")
         }
     }
     
@@ -67,6 +66,11 @@ class SyncOrchestrator {
                 self.events.append(contentsOf: events)
             }
         }
+                
+        // Schedule focus mode activation for each event
+        for event in events {
+            scheduleFocusModeActivation(event: event)
+        }
     }
     
     func scheduleFocusModeActivation(event: CalendarEvent) {
@@ -78,21 +82,23 @@ class SyncOrchestrator {
         let triggerDelta = timeBuffer * -1
         
         let triggerDate = eventStartDate.addingTimeInterval(TimeInterval(triggerDelta))
-     
-        // Schedule timer to be ran
-        
+             
         // Check if there's an active timer for this event
-        if let activeTimer = activeFocusModeTimers[event.id] {
+        if let activeTimer = self.activeFocusModeTimers[event.id] {
             // Cancel it if duration and start date different
+            if activeTimer.fireDate != triggerDate {
+                activeTimer.invalidate()
+            } else {
+                // Otherwise, do nothing
+                return
+            }
         }
-
-        let timerContext = ["event": event]
+        
         let timer = Timer.scheduledTimer(withTimeInterval: triggerDate.timeIntervalSinceNow, repeats: false,
             block: { _ in
                 enableFocusMode(duration: eventDuration)
             }
         )
-        
-        activeFocusModeTimers[event.id] = timer
+        self.activeFocusModeTimers[event.id] = timer
     }
 }

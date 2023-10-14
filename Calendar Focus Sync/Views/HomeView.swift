@@ -112,6 +112,15 @@ struct HomeView: View {
                     LaunchAtLogin.Toggle("").toggleStyle(.switch)
                 }
                 
+                HStack {
+                    Text("Test")
+                    Spacer()
+                    Button("Run") {
+                        print("Current thread: \(Thread.current)")
+                        SyncOrchestrator.shared.go()
+                    }
+                }
+                
                 Divider()
                 
                 HStack {

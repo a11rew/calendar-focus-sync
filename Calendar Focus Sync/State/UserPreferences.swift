@@ -10,8 +10,10 @@ class UserPreferences: ObservableObject {
     
     @Published var nativeCalendarAccessGranted: Bool {
         didSet {
-            // Trigger calendar sync
-            SyncOrchestrator(userPreferences: UserPreferences.shared, syncHandlers: [NativeCalendarSync()]).go()
+            Task {
+                // Trigger calendar sync
+                await SyncOrchestrator(userPreferences: UserPreferences.shared, syncHandlers: [NativeCalendarSync()]).go()
+            }
         }
     }
     @Published var selectedPriorTimeBuffer: Int {

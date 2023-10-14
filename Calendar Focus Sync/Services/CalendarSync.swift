@@ -23,14 +23,19 @@ func requestNativeCalendarEventPermissions() async throws -> Bool {
     return isGranted
 }
 
-
-// TODO: Register event store change listener
-//    NotificationCenter.default.addObserver(self, selector: Selector("storeChanged:"), name: .EKEventStoreChanged, object: store)
-//
-
 class NativeCalendarSync: CalendarSyncer {
     var eventStore: EKEventStore = store
     var identifier = "native-calendar"
+    
+    init() {
+        NotificationCenter.default.addObserver(self, selector: #selector(storeChanged(_:)), name: .EKEventStoreChanged, object: store)
+    }
+    
+    @objc func storeChanged(_ notification: Notification) {
+        Task {
+            await self.sync(syncFilter: defaultSyncFilter)
+        }
+    }
     
     func sync(syncFilter: SyncFilter) async -> [CalendarEvent] {
         // Check access to event store
@@ -38,7 +43,6 @@ class NativeCalendarSync: CalendarSyncer {
         
         // Silently exit if permissions not granted
         if status != .fullAccess {
-            print("Native calendar access not granted")
             return []
         }
         
@@ -52,11 +56,19 @@ class NativeCalendarSync: CalendarSyncer {
         
         return events.map { event in
             CalendarEvent(
-                id: event.eventIdentifier,
+                id: uniqueIDForEventInstance(event: event),
                 title: event.title,
                 startDate: event.startDate,
                 endDate: event.endDate
             )
         }
     }
+}
+
+func uniqueIDForEventInstance(event: EKEvent) -> String {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ" // ISO 8601 format
+    let startDateString = formatter.string(from: event.startDate)
+    let endDateString = formatter.string(from: event.endDate)
+    return "\(event.eventIdentifier ?? event.calendarItemIdentifier)_\(startDateString)_\(endDateString)"
 }
