@@ -38,6 +38,7 @@ class NativeCalendarSync: CalendarSyncer {
         
         // Silently exit if permissions not granted
         if status != .fullAccess {
+            print("Native calendar access not granted")
             return []
         }
         
@@ -57,15 +58,5 @@ class NativeCalendarSync: CalendarSyncer {
                 endDate: event.endDate
             )
         }
-    }
-    
-    func setupPermissions() async -> Bool {
-        do {
-            return try await requestNativeCalendarEventPermissions()
-        } catch {
-            print("Failed to request calendar permissions: \(error)")
-        }
-        
-        return false
     }
 }

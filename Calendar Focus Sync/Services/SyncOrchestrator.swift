@@ -5,7 +5,6 @@ protocol CalendarSyncer {
     var identifier: String { get }
     
     func sync(syncFilter: SyncFilter) async -> [CalendarEvent]
-    func setupPermissions() async -> Bool
 }
 
 struct CalendarEvent {
@@ -21,7 +20,7 @@ struct SyncFilter {
     let calendars: [String] // ids of calendars to sync
 }
 
-let SYNC_DAYS_OUT = 3
+let SYNC_DAYS_OUT = 30
 
 let defaultSyncFilter = SyncFilter(
     startDate: Date(), // Only care about events that haven't begun
@@ -36,6 +35,10 @@ class SyncOrchestrator {
     
     private var activeFocusModeTimers: [String: Timer] = [:]
     
+    static let shared = SyncOrchestrator(userPreferences: UserPreferences.shared, syncHandlers: [
+        NativeCalendarSync()
+    ])
+    
     
     init(userPreferences: UserPreferences, syncHandlers: [CalendarSyncer]) {
         self.events = []
@@ -45,7 +48,6 @@ class SyncOrchestrator {
     
     func go() {
         Task {
-//            await setupPermissions()
             await syncCalendarEvents()
             
             print("Done syncing, events: \(self.events)")
@@ -67,23 +69,6 @@ class SyncOrchestrator {
         }
     }
     
-    func setupPermissions() async {
-        await withTaskGroup(of: (String, Bool).self) { group in
-            for handler in calendarSyncHandlers {
-                group.addTask {
-                    let isSetup = await handler.setupPermissions()
-                    return (handler.identifier, isSetup)
-                }
-            }
-            
-            for await (handler, success) in group {
-                if !success {
-                    print("Failed to setup permissions for calendar sync handler: \(handler)")
-                }
-            }
-        }
-    }
-    
     func scheduleFocusModeActivation(event: CalendarEvent) {
         // Schedules focus mode activation for a particular time
         let eventStartDate = event.startDate
@@ -99,7 +84,6 @@ class SyncOrchestrator {
         // Check if there's an active timer for this event
         if let activeTimer = activeFocusModeTimers[event.id] {
             // Cancel it if duration and start date different
-            
         }
 
         let timerContext = ["event": event]

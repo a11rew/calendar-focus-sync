@@ -36,17 +36,25 @@ struct AppMain: App {
 
 @MainActor
 private final class AppDelegate: NSObject, NSApplicationDelegate {
+    var window: NSWindow?
+    
     func applicationDidFinishLaunching(_ notification: Notification) {
+        // Listen for window becoming key (i.e., active)
+        NotificationCenter.default.addObserver(self, selector: #selector(windowDidBecomeKey(notification:)), name: NSWindow.didBecomeKeyNotification, object: nil)
+        
         DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 5) {
-            let syncOrchestrator = SyncOrchestrator(userPreferences: UserPreferences.shared, syncHandlers: [
-                NativeCalendarSync()
-            ])
-            
-            syncOrchestrator.go()
+            SyncOrchestrator.shared.go()
         }
     }
     
     func applicationWillTerminate(_ notification: Notification) {
         // Tear down services
+    }
+    
+    
+    @objc func windowDidBecomeKey(notification: Notification) {
+        if let window = notification.object as? NSWindow, window === self.window {
+            window.level = .floating // Make window show above others
+        }
     }
 }
