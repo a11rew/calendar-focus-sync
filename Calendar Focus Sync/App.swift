@@ -7,31 +7,31 @@ struct AppMain: App {
     @StateObject var appState = AppState.shared
     
     var body: some Scene {
-        Settings {
-            HomeView()
-                .environmentObject(userPreferences)
-                .environmentObject(appState)
+            Settings {
+                HomeView()
+                    .environmentObject(userPreferences)
+                    .environmentObject(appState)
+                
+                Spacer()
+            }.windowStyle(HiddenTitleBarWindowStyle())
+
             
-            Spacer()
-        }
-        
-        MenuBarExtra {
-            Text("Calendar Focus Sync").disabled(true)
-                      
-            SettingsLink {
-                Text("Settings")
+            MenuBarExtra {
+                Text("Calendar Focus Sync").disabled(true)
+                
+                SettingsLink {
+                    Text("Settings")
+                }
+                
+                Divider()
+                
+                Button("Quit") {
+                    NSApplication.shared.terminate(self)
+                }
+            } label: {
+                Image(systemName: "calendar")
             }
-            
-            Divider()
-        
-            Button("Quit") {
-                NSApplication.shared.terminate(self)
-            }
-        } label: {
-            Image(systemName: "calendar")
         }
-    
-    }
 }
 
 @MainActor

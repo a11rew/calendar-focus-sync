@@ -25,7 +25,9 @@ struct HomeView: View {
             generalConfig
         }
         .padding(16)
+        .background(Color("color-background"))
     }
+    
     
     @ViewBuilder
     private var calendarConfig: some View {
@@ -154,9 +156,12 @@ struct HomeView: View {
 #if DEBUG
 struct HomeViewPreview: PreviewProvider {
     static var previews: some View {
+        let preferences = UserPreferences()
+        let appState = AppState()
+                    
         HomeView()
-            .environmentObject(UserPreferences())
-            .environmentObject(AppState())
+            .environmentObject(preferences)
+            .environmentObject(appState)
     }
 }
 #endif
