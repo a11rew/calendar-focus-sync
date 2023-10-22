@@ -9,7 +9,7 @@
 	<br>
 </div>
 
-This is a macOS app that automatically activates Focus Mode when calendar events begin. It's useful for blocking out time for meetings, deep work, or other activities.
+MacOS app that automatically activates Focus Mode when calendar events begin. It's useful for blocking out time for meetings, deep work, or other activities.
 
 <!-- [![](https://tools.applemediaservices.com/api/badges/download-on-the-mac-app-store/black/en-us?size=250x83&releaseDate=1615852800)](https://apps.apple.com/app/)
 -->
@@ -42,7 +42,10 @@ When your event ends, Focus Mode will automatically deactivate. No need to remem
 
 ## Screenshots
 
-<img src="Stuff/screenshot1.jpg" width="720" height="450">
-<img src="Stuff/screenshot2.jpg" width="720" height="450">
-<img src="Stuff/screenshot3.jpg" width="720" height="450">
-<img src="Stuff/screenshot4.jpg" width="720" height="450">
+![Menu Bar Item](<Calendar Focus Sync/Assets.xcassets/Screenshots/menu-bar.png>)
+
+![Settings Screen](<Calendar Focus Sync/Assets.xcassets/Screenshots/settings.png>)
+
+## License
+
+Calendar Focus Sync is available under the MIT license. See the [LICENSE](LICENSE) file for more info.
