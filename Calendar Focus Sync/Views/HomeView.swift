@@ -9,24 +9,27 @@ struct HomeView: View {
     @State private var isRequestingCalendarPermissions = false
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 20) {
-            Text("Automatically enter focus modes when a calendar event begins")
-            
-            if !appState.isShortCutInstalled {
-                shortcutInstallNotice
+        ScrollView {
+            VStack(alignment: .leading, spacing: 20) {
+                Text("Automatically enter focus modes when a calendar event begins")
+                
+                if !appState.isShortCutInstalled {
+                    shortcutInstallNotice
+                }
+                
+                if !userPreferences.nativeCalendarAccessGranted {
+                    grantPermissionNotice
+                }
+                
+                calendarConfig
+                
+                generalConfig
+                
+                UpcomingEvents()
             }
-            
-            if !userPreferences.nativeCalendarAccessGranted {
-                grantPermissionNotice
-            }
-            
-            calendarConfig
-            
-            generalConfig
+            .padding(16)
         }
-        .padding(16)
-        .background(Color("color-background"))
-    }
+   }
     
     
     @ViewBuilder

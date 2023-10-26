@@ -20,5 +20,53 @@
             landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "16C5C031-4441-4AF3-8D1B-29028D1DB6F3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Calendar Focus Sync/Views/HomeView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "5"
+            endingLineNumber = "5"
+            landmarkName = "HomeView"
+            landmarkType = "14">
+            <Locations>
+               <Location
+                  uuid = "16C5C031-4441-4AF3-8D1B-29028D1DB6F3 - 40d1600ca6c6ef01"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Calendar_Focus_Sync.HomeView.init() -&gt; Calendar_Focus_Sync.HomeView"
+                  moduleName = "Calendar Focus Sync"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrew/dev/Calendar%20Focus%20Sync/Calendar%20Focus%20Sync/Views/HomeView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "5"
+                  endingLineNumber = "5"
+                  offsetFromSymbolStart = "324">
+               </Location>
+               <Location
+                  uuid = "16C5C031-4441-4AF3-8D1B-29028D1DB6F3 - a86cc0465db3952b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Calendar_Focus_Sync.HomeView.init(userPreferences: SwiftUI.EnvironmentObject&lt;Calendar_Focus_Sync.UserPreferences&gt;, appState: SwiftUI.EnvironmentObject&lt;Calendar_Focus_Sync.AppState&gt;) -&gt; Calendar_Focus_Sync.HomeView"
+                  moduleName = "Calendar Focus Sync"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrew/dev/Calendar%20Focus%20Sync/Calendar%20Focus%20Sync/Views/HomeView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "9"
+                  endingLineNumber = "9"
+                  offsetFromSymbolStart = "44">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

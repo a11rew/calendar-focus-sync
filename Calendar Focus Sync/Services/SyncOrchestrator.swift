@@ -49,11 +49,13 @@ class SyncOrchestrator {
     @MainActor
     func go() {
         Task {
-            await syncCalendarEvents()
+            let events = await syncCalendarEvents()
+            
+            AppState.shared.calendarEvents = events
         }
     }
     
-    func syncCalendarEvents() async {
+    func syncCalendarEvents() async -> [CalendarEvent] {
         // Run handlers concurrently
         await withTaskGroup(of: [CalendarEvent].self) { group in
             for handler in calendarSyncHandlers {
@@ -71,6 +73,8 @@ class SyncOrchestrator {
         for event in events {
             scheduleFocusModeActivation(event: event)
         }
+        
+        return events
     }
     
     func scheduleFocusModeActivation(event: CalendarEvent) {
