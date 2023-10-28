@@ -22,7 +22,7 @@ Requires macOS 14.0 or later.
 
 **Non-App Store version**
 
-A DMG is available for the non-App Store version. It's not code-signed, so you need to right-click it and select "Open" to open it. You can then move it to your Applications folder.
+A DMG is available for the non-App Store version. It's not code-signed, so you'll need to whitelist the app in Settings: Security > Privacy.
 
 [Download from Releases](https://github.com/a11rew/calendar-focus-sync/releases)
 
