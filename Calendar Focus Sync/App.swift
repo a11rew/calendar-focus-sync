@@ -8,7 +8,7 @@ struct AppMain: App {
     
     var body: some Scene {
             Settings {
-                HomeView()
+                SettingsView()
                     .environmentObject(userPreferences)
                     .environmentObject(appState)
                 

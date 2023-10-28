@@ -1,8 +1,8 @@
 import SwiftUI
 
-struct UpcomingEvents: View {
+struct UpcomingEventsView: View {
     @EnvironmentObject var appState: AppState
-
+    
     var body: some View {
         let events = appState.calendarEvents
             .filter { $0.startDate > Date() }
@@ -33,7 +33,6 @@ struct UpcomingEvents: View {
                             Divider()
                         }
                     }
-                    
                 }
             }
             .frame(maxWidth: .infinity)

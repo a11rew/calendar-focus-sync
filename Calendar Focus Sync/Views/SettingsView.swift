@@ -2,7 +2,7 @@ import SwiftUI
 import EventKit
 import LaunchAtLogin
 
-struct HomeView: View {
+struct SettingsView: View {
     @EnvironmentObject var userPreferences: UserPreferences
     @EnvironmentObject var appState: AppState
     
@@ -13,19 +13,13 @@ struct HomeView: View {
             VStack(alignment: .leading, spacing: 20) {
                 Text("Automatically enter focus modes when a calendar event begins")
                 
-                if !appState.isShortCutInstalled {
-                    shortcutInstallNotice
-                }
+                NoticesView()
                 
-                if !userPreferences.nativeCalendarAccessGranted {
-                    grantPermissionNotice
-                }
+                CalendarConfigView
                 
-                calendarConfig
+                GeneralConfigView
                 
-                generalConfig
-                
-                UpcomingEvents()
+                UpcomingEventsView()
             }
             .padding(16)
         }
@@ -33,7 +27,7 @@ struct HomeView: View {
     
     
     @ViewBuilder
-    private var calendarConfig: some View {
+    private var CalendarConfigView: some View {
         VStack(alignment: .leading) {
             Text("Calendars")
             
@@ -61,52 +55,7 @@ struct HomeView: View {
     }
     
     @ViewBuilder
-    private var shortcutInstallNotice: some View {
-        HStack {
-            Image(systemName: "exclamationmark.triangle.fill")
-                .foregroundColor(.yellow)
-                .font(.system(size: 18))
-                .padding(.trailing, 4)
-            
-            Text("Shortcut not installed. This is required for Calendar Focus Sync to work")
-                .padding(.vertical, 6)
-            
-            Spacer()
-            
-            Button("Install") {
-                installCFSShortcut()
-            }
-        }
-        .padding(8)
-        .background(Color.yellow.opacity(0.3))
-        .cornerRadius(8)
-    }
-    
-    @ViewBuilder
-    private var grantPermissionNotice: some View {
-        HStack {
-            Image(systemName: "exclamationmark.triangle.fill")
-                .foregroundColor(.yellow)
-                .font(.system(size: 18))
-                .padding(.trailing, 4)
-            
-            Text("Calendar access is required to sync events")
-                .padding(.vertical, 6)
-            
-            Spacer()
-            
-            Button("Grant Access") {
-                requestCalendarPermissions()
-            }
-        }
-        .padding(8)
-        .background(Color.yellow.opacity(0.3))
-        .cornerRadius(8)
-    }
-    
-    
-    @ViewBuilder
-    private var generalConfig: some View {
+    private var GeneralConfigView: some View {
         VStack(alignment: .leading) {
             Text("Preferences")
             
@@ -142,29 +91,23 @@ struct HomeView: View {
     
     func requestCalendarPermissions() {
         Task {
-            isRequestingCalendarPermissions = true
-            
             do {
                 try await requestNativeCalendarEventPermissions()
             } catch {
                 // TODO: Show error in UI
                 print(error)
             }
-            
-            isRequestingCalendarPermissions = false
         }
     }
 }
 
-#if DEBUG
-struct HomeViewPreview: PreviewProvider {
+struct SettingsViewPreview: PreviewProvider {
     static var previews: some View {
         let preferences = UserPreferences()
         let appState = AppState()
                     
-        HomeView()
+        SettingsView()
             .environmentObject(preferences)
             .environmentObject(appState)
     }
 }
-#endif
