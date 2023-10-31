@@ -1,10 +1,11 @@
 import EventKit
 
-let store = EKEventStore()
+// Globally accessible event store
+var store = EKEventStore()
 
 @discardableResult
-func requestNativeCalendarEventPermissions() async throws -> Bool {
-    let status = EKEventStore.authorizationStatus(for: .event)
+func requestNativeCalendarEventPermissions(eventStore: EKStoreProtocol = EKEventStore()) async throws -> Bool {
+    let status = type(of: eventStore).authorizationStatus(for: .event)
     var isGranted = false
     
     switch status {
@@ -24,14 +25,15 @@ func requestNativeCalendarEventPermissions() async throws -> Bool {
 }
 
 class NativeCalendarSync: CalendarSyncer {
-    var eventStore: EKEventStore = store
+    var eventStore: EKStoreProtocol = store
     var identifier = "native-calendar"
     
     init() {
-        NotificationCenter.default.addObserver(self, selector: #selector(storeChanged(_:)), name: .EKEventStoreChanged, object: store)
+        NotificationCenter.default.addObserver(self, selector: #selector(storeChanged(_:)), name: .EKEventStoreChanged, object: nil)
     }
     
     @objc func storeChanged(_ notification: Notification) {
+        print("Event store changed")
         Task {
             await self.sync(syncFilter: defaultSyncFilter)
         }

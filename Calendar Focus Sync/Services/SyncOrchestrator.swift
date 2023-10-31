@@ -39,7 +39,6 @@ class SyncOrchestrator {
         NativeCalendarSync()
     ])
     
-    
     init(userPreferences: UserPreferences, syncHandlers: [CalendarSyncer]) {
         self.events = []
         self.userPreferences = userPreferences

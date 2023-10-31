@@ -1,8 +1,11 @@
-//
-//  EventKit.swift
-//  Calendar Focus Sync
-//
-//  Created by Andrew Glago on 28/10/2023.
-//
+// Dependency injection helper for testing
+import EventKit
 
-import Foundation
+protocol EKStoreProtocol {
+    static func authorizationStatus(for entityType: EKEntityType) -> EKAuthorizationStatus
+    func requestFullAccessToEvents() async throws -> Bool
+}
+
+extension EKEventStore: EKStoreProtocol {
+    // Conform EKEventStore to EKStoreProtocol
+}

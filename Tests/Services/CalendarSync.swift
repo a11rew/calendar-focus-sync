@@ -1,35 +1,78 @@
-//
-//  CalendarSync.swift
-//  Tests
-//
-//  Created by Andrew Glago on 28/10/2023.
-//
-
 import XCTest
+import EventKit
 
-final class CalendarSync: XCTestCase {
+@testable import Calendar_Focus_Sync
 
+final class NativeCalendarSyncTests: XCTestCase {
+    // Mocked Event Store to return controlled responses for authorization status and request for permissions.
+    var mockEventStore = MockEKEventStore()
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        try super.setUpWithError()
+        
+        // Replace the global event store instance with the mock
+        store = self.mockEventStore
+        
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        try super.tearDownWithError()
+        
+        // Reset the global event store instance
+        store = MockEKEventStore()
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
+    func testFullAccessStatusDoesNotRequestPermissions() async throws {
+        // Set mock to return .fullAccess
+        MockEKEventStore.authorizationStatusToReturn = .fullAccess
+        
+        let isGranted = try await requestNativeCalendarEventPermissions(eventStore: mockEventStore)
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+        XCTAssertTrue(isGranted)
+        XCTAssertFalse(mockEventStore.didRequestFullAccess) // Ensure requestFullAccessToEvents was not called
+    }
+    
+    func testNonFullAccessStatusRequestsPermissionsAndSucceeds() async throws {
+        // Set mock to return .denied and succeed when requesting permissions
+        MockEKEventStore.authorizationStatusToReturn = .denied
+        mockEventStore.requestFullAccessResult = true
+
+        let isGranted = try await requestNativeCalendarEventPermissions(eventStore: mockEventStore)
+
+        XCTAssertTrue(isGranted)
+        XCTAssertTrue(mockEventStore.didRequestFullAccess) // Ensure requestFullAccessToEvents was called
+    }
+    
+    func testNonFullAccessStatusRequestsPermissionsAndFails() async throws {
+        // Set mock to return .denied and fail when requesting permissions
+        MockEKEventStore.authorizationStatusToReturn = .denied
+        mockEventStore.requestFullAccessResult = false
+        
+        let isGranted = try await requestNativeCalendarEventPermissions(eventStore: mockEventStore)
+
+        XCTAssertFalse(isGranted)
+        XCTAssertTrue(mockEventStore.didRequestFullAccess) // Ensure requestFullAccessToEvents was called
+    }
+    
+    func testSyncCalledOnEventStoreChange() async throws {
+        // Set mock to return .fullAccess
+        MockEKEventStore.authorizationStatusToReturn = .fullAccess
+        
+        let syncer = TestableNativeCalendarSync()
+        
+        let syncCalledExpectation = expectation(description: "Sync method called")
+
+        syncer.syncCalledCompletion = {
+            syncCalledExpectation.fulfill()
         }
-    }
+        
+        // Trigger storeChanged
+        NotificationCenter.default.post(name: .EKEventStoreChanged, object: nil)
+        
+        await fulfillment(of: [syncCalledExpectation], timeout: 5)
 
+        XCTAssertTrue(syncer.syncCalled)
+    }
 }
+
+

@@ -12,6 +12,9 @@
 		49A566782AED6B5B0083D89A /* ShortcutInstallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A566772AED6B5B0083D89A /* ShortcutInstallView.swift */; };
 		49A5667A2AED6C400083D89A /* GrantPermissionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A566792AED6C400083D89A /* GrantPermissionsView.swift */; };
 		49A5667C2AED6E460083D89A /* NoticesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A5667B2AED6E460083D89A /* NoticesView.swift */; };
+		49A5667F2AED75530083D89A /* CalendarSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A5667E2AED75530083D89A /* CalendarSync.swift */; };
+		49A566832AED77290083D89A /* EKEventStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A566822AED77290083D89A /* EKEventStore.swift */; };
+		49A566852AED78120083D89A /* EventKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A566842AED78120083D89A /* EventKit.swift */; };
 		49AB0D8D2AA3A8C80047CC2E /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AB0D8C2AA3A8C80047CC2E /* App.swift */; };
 		49AB0D912AA3A8C80047CC2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49AB0D902AA3A8C80047CC2E /* Assets.xcassets */; };
 		49AB0D9F2AA3A8C80047CC2E /* Calendar_Focus_SyncTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AB0D9E2AA3A8C80047CC2E /* Calendar_Focus_SyncTests.swift */; };
@@ -24,6 +27,7 @@
 		49B74B2F2AADEB4200C6A853 /* Focus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B74B2E2AADEB4200C6A853 /* Focus.swift */; };
 		49B74B352AB1E05200C6A853 /* Shell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B74B342AB1E05200C6A853 /* Shell.swift */; };
 		49C21A162AA5E3320063271F /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C21A152AA5E3320063271F /* UserPreferences.swift */; };
+		49D1F0102AF040FC001A5D39 /* NativeCalendarSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D1F00F2AF040FC001A5D39 /* NativeCalendarSync.swift */; };
 		49F388FE2AEAF9D600F3D9BF /* UpcomingEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F388FD2AEAF9D600F3D9BF /* UpcomingEventsView.swift */; };
 		49FB5DF12AB72174009D832C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FB5DF02AB72174009D832C /* AppState.swift */; };
 		49FB5DF32AB72944009D832C /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FB5DF22AB72944009D832C /* Color.swift */; };
@@ -54,6 +58,9 @@
 		49A566772AED6B5B0083D89A /* ShortcutInstallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutInstallView.swift; sourceTree = "<group>"; };
 		49A566792AED6C400083D89A /* GrantPermissionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrantPermissionsView.swift; sourceTree = "<group>"; };
 		49A5667B2AED6E460083D89A /* NoticesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticesView.swift; sourceTree = "<group>"; };
+		49A5667E2AED75530083D89A /* CalendarSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSync.swift; sourceTree = "<group>"; };
+		49A566822AED77290083D89A /* EKEventStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKEventStore.swift; sourceTree = "<group>"; };
+		49A566842AED78120083D89A /* EventKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventKit.swift; sourceTree = "<group>"; };
 		49AB0D892AA3A8C80047CC2E /* Calendar Focus Sync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Calendar Focus Sync.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49AB0D8C2AA3A8C80047CC2E /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		49AB0D902AA3A8C80047CC2E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -70,6 +77,7 @@
 		49B74B342AB1E05200C6A853 /* Shell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shell.swift; sourceTree = "<group>"; };
 		49C21A122AA5DE8D0063271F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49C21A152AA5E3320063271F /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
+		49D1F00F2AF040FC001A5D39 /* NativeCalendarSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeCalendarSync.swift; sourceTree = "<group>"; };
 		49F388FD2AEAF9D600F3D9BF /* UpcomingEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingEventsView.swift; sourceTree = "<group>"; };
 		49FB5DF02AB72174009D832C /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		49FB5DF22AB72944009D832C /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -122,6 +130,22 @@
 			path = Notices;
 			sourceTree = "<group>";
 		};
+		49A566802AED755D0083D89A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				49A5667E2AED75530083D89A /* CalendarSync.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		49A566812AED771A0083D89A /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				49A566822AED77290083D89A /* EKEventStore.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		49AB0D802AA3A8C80047CC2E = {
 			isa = PBXGroup;
 			children = (
@@ -163,6 +187,9 @@
 		49AB0D9D2AA3A8C80047CC2E /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				49D1F00E2AF040EB001A5D39 /* Stubs */,
+				49A566812AED771A0083D89A /* Mocks */,
+				49A566802AED755D0083D89A /* Services */,
 				49AB0D9E2AA3A8C80047CC2E /* Calendar_Focus_SyncTests.swift */,
 			);
 			path = Tests;
@@ -191,6 +218,7 @@
 				49B74B342AB1E05200C6A853 /* Shell.swift */,
 				49FB5DF22AB72944009D832C /* Color.swift */,
 				49FB5DF42AB73060009D832C /* Time.swift */,
+				49A566842AED78120083D89A /* EventKit.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -212,6 +240,14 @@
 				49FB5DF02AB72174009D832C /* AppState.swift */,
 			);
 			path = State;
+			sourceTree = "<group>";
+		};
+		49D1F00E2AF040EB001A5D39 /* Stubs */ = {
+			isa = PBXGroup;
+			children = (
+				49D1F00F2AF040FC001A5D39 /* NativeCalendarSync.swift */,
+			);
+			path = Stubs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -353,6 +389,7 @@
 				49FB5DF12AB72174009D832C /* AppState.swift in Sources */,
 				49A5667A2AED6C400083D89A /* GrantPermissionsView.swift in Sources */,
 				49B74B2A2AA8640E00C6A853 /* SyncOrchestrator.swift in Sources */,
+				49A566852AED78120083D89A /* EventKit.swift in Sources */,
 				49FB5DF52AB73060009D832C /* Time.swift in Sources */,
 				49A5667C2AED6E460083D89A /* NoticesView.swift in Sources */,
 				49A566782AED6B5B0083D89A /* ShortcutInstallView.swift in Sources */,
@@ -372,7 +409,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49D1F0102AF040FC001A5D39 /* NativeCalendarSync.swift in Sources */,
+				49A5667F2AED75530083D89A /* CalendarSync.swift in Sources */,
 				49AB0D9F2AA3A8C80047CC2E /* Calendar_Focus_SyncTests.swift in Sources */,
+				49A566832AED77290083D89A /* EKEventStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -592,7 +632,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.andrewglago.Calendar-Focus-SyncTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -611,7 +651,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.andrewglago.Calendar-Focus-SyncTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
