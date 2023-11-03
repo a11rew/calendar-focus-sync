@@ -3,12 +3,11 @@
 class TestableNativeCalendarSync: NativeCalendarSync {
     public var syncCalled = false
     public var syncCalledCompletion: (() -> Void)?
-
     
-    override func sync(syncFilter: SyncFilter) async -> [CalendarEvent] {
+    override func sync(syncFilter: SyncFilter, skipPermissionsCheck: Bool = false) async -> [CalendarEvent] {
         syncCalled = true
         
-        let result = await super.sync(syncFilter: syncFilter)
+        let result = await super.sync(syncFilter: syncFilter, skipPermissionsCheck: skipPermissionsCheck)
 
         syncCalledCompletion?()
         

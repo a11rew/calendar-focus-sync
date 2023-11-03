@@ -4,7 +4,14 @@ import Foundation
 protocol CalendarSyncer {
     var identifier: String { get }
     
-    func sync(syncFilter: SyncFilter) async -> [CalendarEvent]
+    func sync(syncFilter: SyncFilter, skipPermissionsCheck: Bool?) async -> [CalendarEvent]
+}
+
+// Define default
+extension CalendarSyncer {
+    func sync(syncFilter: SyncFilter, skipPermissionsCheck: Bool? = nil) async -> [CalendarEvent] {
+        return await sync(syncFilter: syncFilter, skipPermissionsCheck: skipPermissionsCheck ?? false)
+    }
 }
 
 struct CalendarEvent {

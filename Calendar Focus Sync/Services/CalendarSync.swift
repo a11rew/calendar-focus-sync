@@ -7,7 +7,7 @@ var store = EKEventStore()
 func requestNativeCalendarEventPermissions(eventStore: EKStoreProtocol = EKEventStore()) async throws -> Bool {
     let status = type(of: eventStore).authorizationStatus(for: .event)
     var isGranted = false
-    
+        
     switch status {
         case .fullAccess:
             isGranted = true
@@ -25,7 +25,6 @@ func requestNativeCalendarEventPermissions(eventStore: EKStoreProtocol = EKEvent
 }
 
 class NativeCalendarSync: CalendarSyncer {
-    var eventStore: EKStoreProtocol = store
     var identifier = "native-calendar"
     
     init() {
@@ -33,19 +32,20 @@ class NativeCalendarSync: CalendarSyncer {
     }
     
     @objc func storeChanged(_ notification: Notification) {
-        print("Event store changed")
         Task {
             await self.sync(syncFilter: defaultSyncFilter)
         }
     }
     
-    func sync(syncFilter: SyncFilter) async -> [CalendarEvent] {
-        // Check access to event store
-        let status = EKEventStore.authorizationStatus(for: .event)
-        
-        // Silently exit if permissions not granted
-        if status != .fullAccess {
-            return []
+    func sync(syncFilter: SyncFilter, skipPermissionsCheck: Bool = false) async -> [CalendarEvent] {
+        if (!skipPermissionsCheck) {
+            // Check access to event store
+            let status = EKEventStore.authorizationStatus(for: .event)
+            
+            // Silently exit if permissions not granted
+            if status != .fullAccess {
+                return []
+            }
         }
         
         // Declare event fetch parameters
