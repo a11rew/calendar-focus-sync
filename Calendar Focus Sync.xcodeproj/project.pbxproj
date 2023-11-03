@@ -17,8 +17,6 @@
 		49A566852AED78120083D89A /* EventKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A566842AED78120083D89A /* EventKit.swift */; };
 		49AB0D8D2AA3A8C80047CC2E /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AB0D8C2AA3A8C80047CC2E /* App.swift */; };
 		49AB0D912AA3A8C80047CC2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49AB0D902AA3A8C80047CC2E /* Assets.xcassets */; };
-		49AB0DA92AA3A8C80047CC2E /* Calendar_Focus_SyncUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AB0DA82AA3A8C80047CC2E /* Calendar_Focus_SyncUITests.swift */; };
-		49AB0DAB2AA3A8C80047CC2E /* Calendar_Focus_SyncUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AB0DAA2AA3A8C80047CC2E /* Calendar_Focus_SyncUITestsLaunchTests.swift */; };
 		49AB0DBA2AA3AAA10047CC2E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AB0DB92AA3AAA10047CC2E /* SettingsView.swift */; };
 		49AB0DBC2AA4837E0047CC2E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AB0DBB2AA4837E0047CC2E /* Constants.swift */; };
 		49B74B2A2AA8640E00C6A853 /* SyncOrchestrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B74B292AA8640E00C6A853 /* SyncOrchestrator.swift */; };
@@ -66,8 +64,6 @@
 		49AB0D952AA3A8C80047CC2E /* Calendar_Focus_Sync.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Calendar_Focus_Sync.entitlements; sourceTree = "<group>"; };
 		49AB0D9A2AA3A8C80047CC2E /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		49AB0DA42AA3A8C80047CC2E /* UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		49AB0DA82AA3A8C80047CC2E /* Calendar_Focus_SyncUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar_Focus_SyncUITests.swift; sourceTree = "<group>"; };
-		49AB0DAA2AA3A8C80047CC2E /* Calendar_Focus_SyncUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar_Focus_SyncUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		49AB0DB92AA3AAA10047CC2E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		49AB0DBB2AA4837E0047CC2E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		49B74B292AA8640E00C6A853 /* SyncOrchestrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncOrchestrator.swift; sourceTree = "<group>"; };
@@ -141,7 +137,6 @@
 			children = (
 				49AB0D8B2AA3A8C80047CC2E /* Calendar Focus Sync */,
 				49AB0D9D2AA3A8C80047CC2E /* Tests */,
-				49AB0DA72AA3A8C80047CC2E /* UITests */,
 				49AB0D8A2AA3A8C80047CC2E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -182,15 +177,6 @@
 				49A5667E2AED75530083D89A /* NativeCalendarSyncTests.swift */,
 			);
 			path = Tests;
-			sourceTree = "<group>";
-		};
-		49AB0DA72AA3A8C80047CC2E /* UITests */ = {
-			isa = PBXGroup;
-			children = (
-				49AB0DA82AA3A8C80047CC2E /* Calendar_Focus_SyncUITests.swift */,
-				49AB0DAA2AA3A8C80047CC2E /* Calendar_Focus_SyncUITestsLaunchTests.swift */,
-			);
-			path = UITests;
 			sourceTree = "<group>";
 		};
 		49B74B302AB0CE4800C6A853 /* Resources */ = {
@@ -408,8 +394,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49AB0DAB2AA3A8C80047CC2E /* Calendar_Focus_SyncUITestsLaunchTests.swift in Sources */,
-				49AB0DA92AA3A8C80047CC2E /* Calendar_Focus_SyncUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
