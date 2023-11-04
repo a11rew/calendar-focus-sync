@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4907ED502AA5C0EF000A566E /* CalendarSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4907ED4F2AA5C0EF000A566E /* CalendarSync.swift */; };
 		490D80C72ADB151800E361C1 /* calendar-focus-sync.shortcut in Resources */ = {isa = PBXBuildFile; fileRef = 490D80C62ADB151800E361C1 /* calendar-focus-sync.shortcut */; };
+		496FB0CD2AF6638900FE2BE8 /* SyncOrchestratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496FB0CC2AF6638900FE2BE8 /* SyncOrchestratorTests.swift */; };
+		496FB0CF2AF6640000FE2BE8 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496FB0CE2AF6640000FE2BE8 /* UserPreferences.swift */; };
 		49A566782AED6B5B0083D89A /* ShortcutInstallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A566772AED6B5B0083D89A /* ShortcutInstallView.swift */; };
 		49A5667A2AED6C400083D89A /* GrantPermissionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A566792AED6C400083D89A /* GrantPermissionsView.swift */; };
 		49A5667C2AED6E460083D89A /* NoticesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A5667B2AED6E460083D89A /* NoticesView.swift */; };
@@ -52,6 +54,8 @@
 		4907ED4F2AA5C0EF000A566E /* CalendarSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSync.swift; sourceTree = "<group>"; };
 		490D80C62ADB151800E361C1 /* calendar-focus-sync.shortcut */ = {isa = PBXFileReference; lastKnownFileType = file; path = "calendar-focus-sync.shortcut"; sourceTree = "<group>"; };
 		490D80C82ADB1E0A00E361C1 /* Calendar Focus SyncRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Calendar Focus SyncRelease.entitlements"; sourceTree = "<group>"; };
+		496FB0CC2AF6638900FE2BE8 /* SyncOrchestratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncOrchestratorTests.swift; sourceTree = "<group>"; };
+		496FB0CE2AF6640000FE2BE8 /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		49A566772AED6B5B0083D89A /* ShortcutInstallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutInstallView.swift; sourceTree = "<group>"; };
 		49A566792AED6C400083D89A /* GrantPermissionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrantPermissionsView.swift; sourceTree = "<group>"; };
 		49A5667B2AED6E460083D89A /* NoticesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticesView.swift; sourceTree = "<group>"; };
@@ -63,7 +67,6 @@
 		49AB0D902AA3A8C80047CC2E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49AB0D952AA3A8C80047CC2E /* Calendar_Focus_Sync.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Calendar_Focus_Sync.entitlements; sourceTree = "<group>"; };
 		49AB0D9A2AA3A8C80047CC2E /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		49AB0DA42AA3A8C80047CC2E /* UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		49AB0DB92AA3AAA10047CC2E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		49AB0DBB2AA4837E0047CC2E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		49B74B292AA8640E00C6A853 /* SyncOrchestrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncOrchestrator.swift; sourceTree = "<group>"; };
@@ -128,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				49A566822AED77290083D89A /* EKEventStore.swift */,
+				496FB0CE2AF6640000FE2BE8 /* UserPreferences.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -146,7 +150,6 @@
 			children = (
 				49AB0D892AA3A8C80047CC2E /* Calendar Focus Sync.app */,
 				49AB0D9A2AA3A8C80047CC2E /* Tests.xctest */,
-				49AB0DA42AA3A8C80047CC2E /* UITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -175,6 +178,7 @@
 				49D1F00E2AF040EB001A5D39 /* Stubs */,
 				49A566812AED771A0083D89A /* Mocks */,
 				49A5667E2AED75530083D89A /* NativeCalendarSyncTests.swift */,
+				496FB0CC2AF6638900FE2BE8 /* SyncOrchestratorTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -266,24 +270,6 @@
 			productReference = 49AB0D9A2AA3A8C80047CC2E /* Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		49AB0DA32AA3A8C80047CC2E /* UITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 49AB0DB42AA3A8C80047CC2E /* Build configuration list for PBXNativeTarget "UITests" */;
-			buildPhases = (
-				49AB0DA02AA3A8C80047CC2E /* Sources */,
-				49AB0DA12AA3A8C80047CC2E /* Frameworks */,
-				49AB0DA22AA3A8C80047CC2E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				49AB0DA62AA3A8C80047CC2E /* PBXTargetDependency */,
-			);
-			name = UITests;
-			productName = UITests;
-			productReference = 49AB0DA42AA3A8C80047CC2E /* UITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -325,7 +311,6 @@
 			targets = (
 				49AB0D882AA3A8C80047CC2E /* Calendar Focus Sync */,
 				49AB0D992AA3A8C80047CC2E /* Tests */,
-				49AB0DA32AA3A8C80047CC2E /* UITests */,
 			);
 		};
 /* End PBXProject section */
@@ -384,8 +369,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				496FB0CF2AF6640000FE2BE8 /* UserPreferences.swift in Sources */,
 				49D1F0102AF040FC001A5D39 /* NativeCalendarSync.swift in Sources */,
 				49A5667F2AED75530083D89A /* NativeCalendarSyncTests.swift in Sources */,
+				496FB0CD2AF6638900FE2BE8 /* SyncOrchestratorTests.swift in Sources */,
 				49A566832AED77290083D89A /* EKEventStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -633,40 +620,6 @@
 			};
 			name = Release;
 		};
-		49AB0DB52AA3A8C80047CC2E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.andrewglago.Calendar-Focus-SyncUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = "Calendar Focus Sync";
-			};
-			name = Debug;
-		};
-		49AB0DB62AA3A8C80047CC2E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.andrewglago.Calendar-Focus-SyncUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = "Calendar Focus Sync";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -693,15 +646,6 @@
 			buildConfigurations = (
 				49AB0DB22AA3A8C80047CC2E /* Debug */,
 				49AB0DB32AA3A8C80047CC2E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		49AB0DB42AA3A8C80047CC2E /* Build configuration list for PBXNativeTarget "UITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				49AB0DB52AA3A8C80047CC2E /* Debug */,
-				49AB0DB62AA3A8C80047CC2E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
