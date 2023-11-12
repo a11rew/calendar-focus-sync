@@ -4,14 +4,9 @@ import Foundation
 protocol CalendarSyncer {
     var identifier: String { get }
     
-    func sync(syncFilter: SyncFilter, skipPermissionsCheck: Bool?) async -> [CalendarEvent]
-}
-
-// Define default
-extension CalendarSyncer {
-    func sync(syncFilter: SyncFilter, skipPermissionsCheck: Bool? = nil) async -> [CalendarEvent] {
-        return await sync(syncFilter: syncFilter, skipPermissionsCheck: skipPermissionsCheck ?? false)
-    }
+    func sync(syncFilter: SyncFilter, skipPermissionsCheck: Bool) async -> [CalendarEvent]
+    
+    func registerForChanges(selector: Selector, target: AnyObject)
 }
 
 struct CalendarEvent {
@@ -35,46 +30,83 @@ let defaultSyncFilter = SyncFilter(
     calendars: []
 )
 
+actor EventsHolder {
+    var events: [CalendarEvent] = []
+    
+    func append(events newEvents: [CalendarEvent]) {
+           self.events.append(contentsOf: newEvents)
+    }
+    
+    func get() -> [CalendarEvent] {
+        return self.events
+    }
+    
+    func clear() {
+        self.events = []
+    }
+
+}
+
 class SyncOrchestrator {
-    private var events: [CalendarEvent]
+    private let eventsHolder = EventsHolder()
     private let userPreferences: UserPreferences
     private let calendarSyncHandlers: [CalendarSyncer]
     
-    private var activeFocusModeTimers: [String: Timer] = [:]
+    var skipPermissionsCheck = false
+    var activeFocusModeTimers: [String: Timer] = [:]
     
-    static let shared = SyncOrchestrator(userPreferences: UserPreferences.shared, syncHandlers: [
-        NativeCalendarSync()
-    ])
-    
-    init(userPreferences: UserPreferences, syncHandlers: [CalendarSyncer]) {
-        self.events = []
+    init(userPreferences: UserPreferences, syncHandlers: [CalendarSyncer], skipPermissionsCheck: Bool = false) {
         self.userPreferences = userPreferences
         self.calendarSyncHandlers = syncHandlers
+        self.skipPermissionsCheck = skipPermissionsCheck
+        
+        // Register for calendar changes
+        for handler in calendarSyncHandlers {
+            handler.registerForChanges(selector: #selector(triggerSync), target: self)
+        }
     }
     
+    deinit {
+        for (_, timer) in activeFocusModeTimers {
+            timer.invalidate()
+        }
+    }
+    
+ 
+    
     @MainActor
-    func go() {
+    func go() async {
+        Task { @MainActor in
+            AppState.shared.calendarEvents = await syncCalendarEvents()
+            print("Done")
+        }
+    }
+    
+    @objc func triggerSync() {
         Task {
-            let events = await syncCalendarEvents()
-            
-            AppState.shared.calendarEvents = events
+            await self.go()
         }
     }
     
     func syncCalendarEvents() async -> [CalendarEvent] {
+        // Clear existing events
+        await eventsHolder.clear()
+        
         // Run handlers concurrently
         await withTaskGroup(of: [CalendarEvent].self) { group in
             for handler in calendarSyncHandlers {
                 group.addTask {
-                    await handler.sync(syncFilter: defaultSyncFilter)
+                    return await handler.sync(syncFilter: defaultSyncFilter, skipPermissionsCheck: self.skipPermissionsCheck)
                 }
             }
             
-            for await events in group {
-                self.events.append(contentsOf: events)
+            for await newEvents in group {
+                await eventsHolder.append(events: newEvents)
             }
         }
-                
+        
+        let events = await eventsHolder.get()
+                            
         // Schedule focus mode activation for each event
         for event in events {
             scheduleFocusModeActivation(event: event)
@@ -89,8 +121,8 @@ class SyncOrchestrator {
         let eventDuration = Int(event.endDate.timeIntervalSince(eventStartDate))
         
         let timeBuffer = userPreferences.selectedPriorTimeBuffer
-        let triggerDelta = timeBuffer * -1
-        
+        let triggerDelta = timeBuffer * 60 * -1 
+                
         let triggerDate = eventStartDate.addingTimeInterval(TimeInterval(triggerDelta))
              
         // Check if there's an active timer for this event
@@ -98,6 +130,7 @@ class SyncOrchestrator {
             // Cancel it if duration and start date different
             if activeTimer.fireDate != triggerDate {
                 activeTimer.invalidate()
+                activeFocusModeTimers.removeValue(forKey: event.id)
             } else {
                 // Otherwise, do nothing
                 return

@@ -26,17 +26,11 @@ func requestNativeCalendarEventPermissions(eventStore: EKStoreProtocol = EKEvent
 
 class NativeCalendarSync: CalendarSyncer {
     var identifier = "native-calendar"
-    
-    init() {
-        NotificationCenter.default.addObserver(self, selector: #selector(storeChanged(_:)), name: .EKEventStoreChanged, object: nil)
+        
+    func registerForChanges(selector: Selector, target: AnyObject) {
+        NotificationCenter.default.addObserver(target, selector: selector, name: .EKEventStoreChanged, object: nil)
     }
-    
-    @objc func storeChanged(_ notification: Notification) {
-        Task {
-            await self.sync(syncFilter: defaultSyncFilter)
-        }
-    }
-    
+
     func sync(syncFilter: SyncFilter, skipPermissionsCheck: Bool = false) async -> [CalendarEvent] {
         if (!skipPermissionsCheck) {
             // Check access to event store
@@ -55,7 +49,7 @@ class NativeCalendarSync: CalendarSyncer {
         // Fetch events
         let predicate = store.predicateForEvents(withStart: syncFilter.startDate, end: syncFilter.endDate, calendars: calendars)
         let events = store.events(matching: predicate)
-        
+
         return events.map { event in
             CalendarEvent(
                 id: uniqueIDForEventInstance(event: event),
