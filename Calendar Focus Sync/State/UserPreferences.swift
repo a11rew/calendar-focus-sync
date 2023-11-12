@@ -11,8 +11,10 @@ class UserPreferences: ObservableObject {
     @Published var nativeCalendarAccessGranted: Bool {
         didSet {
             Task {
-                // Trigger calendar sync
-                await SyncOrchestrator(userPreferences: UserPreferences.shared, syncHandlers: [NativeCalendarSync()]).go()
+                if nativeCalendarAccessGranted {
+                    // Trigger calendar sync
+                    await SyncOrchestrator(userPreferences: UserPreferences.shared, syncHandlers: [NativeCalendarSync()]).go()
+                }
             }
         }
     }
