@@ -78,7 +78,6 @@ class SyncOrchestrator {
     func go() async {
         Task { @MainActor in
             AppState.shared.calendarEvents = await syncCalendarEvents()
-            print("Done")
         }
     }
     
@@ -106,12 +105,11 @@ class SyncOrchestrator {
         }
         
         let events = await eventsHolder.get()
-                            
+
         // Schedule focus mode activation for each event
         for event in events {
             scheduleFocusModeActivation(event: event)
         }
-        
         return events
     }
     
@@ -142,6 +140,7 @@ class SyncOrchestrator {
                 enableFocusMode(duration: eventDuration)
             }
         )
+        
         self.activeFocusModeTimers[event.id] = timer
     }
 }

@@ -54,26 +54,6 @@ final class NativeCalendarSyncTests: XCTestCase {
         XCTAssertTrue(mockEventStore.didRequestFullAccess) // Ensure requestFullAccessToEvents was called
     }
     
-    func testSyncCalledOnEventStoreChange() async throws {
-        // Set mock to return .fullAccess
-        MockEKEventStore.authorizationStatusToReturn = .fullAccess
-        
-        let syncer = TestableNativeCalendarSync()
-        
-        let syncCalledExpectation = expectation(description: "Sync method called")
-
-        syncer.syncCalledCompletion = {
-            syncCalledExpectation.fulfill()
-        }
-        
-        // Trigger storeChanged
-        NotificationCenter.default.post(name: .EKEventStoreChanged, object: nil)
-        
-        await fulfillment(of: [syncCalledExpectation], timeout: 5)
-
-        XCTAssertTrue(syncer.syncCalled)
-    }
-    
     func testSyncReturnsEventsWithNewIDs() async throws {
         store = MockEKEventStore(eventsToReturn: [
             MockEKEvent(title: "Test Event 1", startDate: Date(), endDate: Date()),

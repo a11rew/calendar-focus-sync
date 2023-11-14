@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4907ED502AA5C0EF000A566E /* CalendarSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4907ED4F2AA5C0EF000A566E /* CalendarSync.swift */; };
 		490D80C72ADB151800E361C1 /* calendar-focus-sync.shortcut in Resources */ = {isa = PBXBuildFile; fileRef = 490D80C62ADB151800E361C1 /* calendar-focus-sync.shortcut */; };
+		491C43832AFC3452000168EA /* SyncOrchestrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491C43822AFC3452000168EA /* SyncOrchestrator.swift */; };
 		496FB0CD2AF6638900FE2BE8 /* SyncOrchestratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496FB0CC2AF6638900FE2BE8 /* SyncOrchestratorTests.swift */; };
 		496FB0CF2AF6640000FE2BE8 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496FB0CE2AF6640000FE2BE8 /* UserPreferences.swift */; };
 		49A566782AED6B5B0083D89A /* ShortcutInstallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A566772AED6B5B0083D89A /* ShortcutInstallView.swift */; };
@@ -41,19 +42,13 @@
 			remoteGlobalIDString = 49AB0D882AA3A8C80047CC2E;
 			remoteInfo = "Calendar Focus Sync";
 		};
-		49AB0DA52AA3A8C80047CC2E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 49AB0D812AA3A8C80047CC2E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 49AB0D882AA3A8C80047CC2E;
-			remoteInfo = "Calendar Focus Sync";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		4907ED4F2AA5C0EF000A566E /* CalendarSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSync.swift; sourceTree = "<group>"; };
 		490D80C62ADB151800E361C1 /* calendar-focus-sync.shortcut */ = {isa = PBXFileReference; lastKnownFileType = file; path = "calendar-focus-sync.shortcut"; sourceTree = "<group>"; };
 		490D80C82ADB1E0A00E361C1 /* Calendar Focus SyncRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Calendar Focus SyncRelease.entitlements"; sourceTree = "<group>"; };
+		491C43822AFC3452000168EA /* SyncOrchestrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncOrchestrator.swift; sourceTree = "<group>"; };
 		496FB0CC2AF6638900FE2BE8 /* SyncOrchestratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncOrchestratorTests.swift; sourceTree = "<group>"; };
 		496FB0CE2AF6640000FE2BE8 /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		49A566772AED6B5B0083D89A /* ShortcutInstallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutInstallView.swift; sourceTree = "<group>"; };
@@ -91,13 +86,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		49AB0D972AA3A8C80047CC2E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		49AB0DA12AA3A8C80047CC2E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -225,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				49D1F00F2AF040FC001A5D39 /* NativeCalendarSync.swift */,
+				491C43822AFC3452000168EA /* SyncOrchestrator.swift */,
 			);
 			path = Stubs;
 			sourceTree = "<group>";
@@ -287,10 +276,6 @@
 						CreatedOnToolsVersion = 14.3;
 						TestTargetID = 49AB0D882AA3A8C80047CC2E;
 					};
-					49AB0DA32AA3A8C80047CC2E = {
-						CreatedOnToolsVersion = 14.3;
-						TestTargetID = 49AB0D882AA3A8C80047CC2E;
-					};
 				};
 			};
 			buildConfigurationList = 49AB0D842AA3A8C80047CC2E /* Build configuration list for PBXProject "Calendar Focus Sync" */;
@@ -332,13 +317,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		49AB0DA22AA3A8C80047CC2E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -369,18 +347,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				491C43832AFC3452000168EA /* SyncOrchestrator.swift in Sources */,
 				496FB0CF2AF6640000FE2BE8 /* UserPreferences.swift in Sources */,
 				49D1F0102AF040FC001A5D39 /* NativeCalendarSync.swift in Sources */,
 				49A5667F2AED75530083D89A /* NativeCalendarSyncTests.swift in Sources */,
 				496FB0CD2AF6638900FE2BE8 /* SyncOrchestratorTests.swift in Sources */,
 				49A566832AED77290083D89A /* EKEventStore.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		49AB0DA02AA3A8C80047CC2E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,11 +363,6 @@
 			isa = PBXTargetDependency;
 			target = 49AB0D882AA3A8C80047CC2E /* Calendar Focus Sync */;
 			targetProxy = 49AB0D9B2AA3A8C80047CC2E /* PBXContainerItemProxy */;
-		};
-		49AB0DA62AA3A8C80047CC2E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 49AB0D882AA3A8C80047CC2E /* Calendar Focus Sync */;
-			targetProxy = 49AB0DA52AA3A8C80047CC2E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
