@@ -13,7 +13,7 @@ class UserPreferences: ObservableObject {
             Task {
                 if nativeCalendarAccessGranted {
                     // Trigger calendar sync
-                    await SyncOrchestrator(userPreferences: UserPreferences.shared, syncHandlers: [NativeCalendarSync()]).go()
+                    await SyncOrchestrator.shared.go()
                 }
             }
         }

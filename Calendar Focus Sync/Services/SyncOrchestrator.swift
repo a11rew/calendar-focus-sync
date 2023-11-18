@@ -52,6 +52,8 @@ class SyncOrchestrator {
     private let userPreferences: UserPreferences
     private let calendarSyncHandlers: [CalendarSyncer]
     
+    static let shared = SyncOrchestrator(userPreferences: UserPreferences.shared, syncHandlers: [NativeCalendarSync()])
+    
     var skipPermissionsCheck = false
     var activeFocusModeTimers: [String: Timer] = [:]
     
@@ -71,8 +73,6 @@ class SyncOrchestrator {
             timer.invalidate()
         }
     }
-    
- 
     
     @MainActor
     func go() async {
@@ -105,11 +105,12 @@ class SyncOrchestrator {
         }
         
         let events = await eventsHolder.get()
-
+        
         // Schedule focus mode activation for each event
         for event in events {
             scheduleFocusModeActivation(event: event)
         }
+        
         return events
     }
     
@@ -119,10 +120,10 @@ class SyncOrchestrator {
         let eventDuration = Int(event.endDate.timeIntervalSince(eventStartDate))
         
         let timeBuffer = userPreferences.selectedPriorTimeBuffer
-        let triggerDelta = timeBuffer * 60 * -1 
-                
+        let triggerDelta = timeBuffer * 60 * -1
+        
         let triggerDate = eventStartDate.addingTimeInterval(TimeInterval(triggerDelta))
-             
+        
         // Check if there's an active timer for this event
         if let activeTimer = self.activeFocusModeTimers[event.id] {
             // Cancel it if duration and start date different
@@ -134,13 +135,14 @@ class SyncOrchestrator {
                 return
             }
         }
-        
-        let timer = Timer.scheduledTimer(withTimeInterval: triggerDate.timeIntervalSinceNow, repeats: false,
-            block: { _ in
-                enableFocusMode(duration: eventDuration)
-            }
-        )
-        
-        self.activeFocusModeTimers[event.id] = timer
+                
+        DispatchQueue.main.sync {
+            let timer = Timer.scheduledTimer(withTimeInterval: triggerDate.timeIntervalSinceNow, repeats: false, block: { _ in
+                    enableFocusMode(duration: eventDuration)
+                }
+            )
+            
+            self.activeFocusModeTimers[event.id] = timer
+        }
     }
 }
