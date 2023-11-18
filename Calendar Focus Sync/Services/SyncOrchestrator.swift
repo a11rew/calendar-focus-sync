@@ -34,7 +34,13 @@ actor EventsHolder {
     var events: [CalendarEvent] = []
     
     func append(events newEvents: [CalendarEvent]) {
-           self.events.append(contentsOf: newEvents)
+        let uniqueNewEvents = newEvents.filter { newEvent in
+            !self.events.contains { existingEvent in
+                existingEvent.id == newEvent.id
+            }
+        }
+        
+        self.events.append(contentsOf: uniqueNewEvents)
     }
     
     func get() -> [CalendarEvent] {
@@ -117,26 +123,19 @@ class SyncOrchestrator {
     func scheduleFocusModeActivation(event: CalendarEvent) {
         // Schedules focus mode activation for a particular time
         let eventStartDate = event.startDate
-        let eventDuration = Int(event.endDate.timeIntervalSince(eventStartDate))
+        let eventDuration = Int(event.endDate.timeIntervalSince(eventStartDate)) / 60
         
         let timeBuffer = userPreferences.selectedPriorTimeBuffer
         let triggerDelta = timeBuffer * 60 * -1
         
         let triggerDate = eventStartDate.addingTimeInterval(TimeInterval(triggerDelta))
         
-        // Check if there's an active timer for this event
-        if let activeTimer = self.activeFocusModeTimers[event.id] {
-            // Cancel it if duration and start date different
-            if activeTimer.fireDate != triggerDate {
+        DispatchQueue.main.sync {
+            // Check if there's an active timer for this event
+            if let activeTimer = self.activeFocusModeTimers[event.id] {
                 activeTimer.invalidate()
                 activeFocusModeTimers.removeValue(forKey: event.id)
-            } else {
-                // Otherwise, do nothing
-                return
             }
-        }
-                
-        DispatchQueue.main.sync {
             let timer = Timer.scheduledTimer(withTimeInterval: triggerDate.timeIntervalSinceNow, repeats: false, block: { _ in
                     enableFocusMode(duration: eventDuration)
                 }
