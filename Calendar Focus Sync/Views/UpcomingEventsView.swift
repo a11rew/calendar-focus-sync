@@ -9,6 +9,9 @@ struct UpcomingEventsView: View {
             .sorted { $0.startDate < $1.startDate }
             .prefix(5)
         
+        let formatter = DateFormatter()
+        formatter.dateFormat = "h:mm a, d MMM"
+        
         return VStack(alignment: .leading) {
             Text("Upcoming Events")
             
@@ -20,12 +23,13 @@ struct UpcomingEventsView: View {
                     }
                 } else {
                     ForEach(events, id: \.id) { event in
+                        
                         HStack {
                             Text(event.title)
                             
                             Spacer()
                             
-                            Text("In \(event.startDate, style: .relative)")
+                            Text(formatter.string(from: event.startDate))
                         }
                         .padding(.top, 2)
                         
