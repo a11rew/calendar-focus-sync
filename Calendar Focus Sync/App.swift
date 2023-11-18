@@ -41,6 +41,11 @@ private final class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
         // Listen for window becoming key (i.e., active)
         NotificationCenter.default.addObserver(self, selector: #selector(windowDidBecomeKey(notification:)), name: NSWindow.didBecomeKeyNotification, object: nil)
+        
+        Task {
+            await SyncOrchestrator.shared.go()
+        }
+    
     }
     
     func applicationWillTerminate(_ notification: Notification) {
