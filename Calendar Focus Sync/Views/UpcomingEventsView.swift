@@ -7,10 +7,10 @@ struct UpcomingEventsView: View {
         let events = appState.calendarEvents
             .filter { $0.startDate > Date() }
             .sorted { $0.startDate < $1.startDate }
-            .prefix(5)
+            .prefix(10)
         
         let formatter = DateFormatter()
-        formatter.dateFormat = "h:mm a, d MMM"
+        formatter.dateFormat = "h:mm, d MMM"
         
         return VStack(alignment: .leading) {
             Text("Upcoming Events")
@@ -23,7 +23,6 @@ struct UpcomingEventsView: View {
                     }
                 } else {
                     ForEach(events, id: \.id) { event in
-                        
                         HStack {
                             Text(event.title)
                             
