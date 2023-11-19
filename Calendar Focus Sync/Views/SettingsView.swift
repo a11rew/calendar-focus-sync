@@ -61,14 +61,6 @@ struct SettingsView: View {
             
             VStack {
                 HStack {
-                    Text("Launch at login")
-                    Spacer()
-                    LaunchAtLogin.Toggle("").toggleStyle(.switch)
-                }
-                
-                Divider()
-                
-                HStack {
                     Text("Enter Focus Mode how long before")
                     Spacer()
                     Picker("", selection: $userPreferences.selectedPriorTimeBuffer) {
@@ -77,6 +69,34 @@ struct SettingsView: View {
                         Text("5 minutes").tag(TimeBefore.five_minutes.rawValue)
                         Text("10 minutes").tag(TimeBefore.ten_minutes.rawValue)
                     }.frame(maxWidth: 140)
+                }
+                
+                Divider()
+                
+                HStack {
+                    Text("Launch at login")
+                    Spacer()
+                    LaunchAtLogin.Toggle("").toggleStyle(.switch)
+                }
+                
+                Divider()
+                
+                HStack {
+                    Text("Notifications when Focus Mode begins")
+                    Spacer()
+                    Toggle("", isOn: $userPreferences.notificationsAccessGranted).toggleStyle(.switch).onChange(of: userPreferences.notificationsAccessGranted, initial: false) {
+                        (_, newValue) in
+                        
+                        if newValue {
+                            Task {
+                                do {
+                                    userPreferences.notificationsAccessGranted = try await requestNotificationPermissions()
+                                } catch {
+                                    userPreferences.notificationsAccessGranted = false
+                                }
+                            }
+                        }
+                    }
                 }
             }
             .padding(8)
@@ -105,7 +125,7 @@ struct SettingsViewPreview: PreviewProvider {
     static var previews: some View {
         let preferences = UserPreferences()
         let appState = AppState()
-                    
+        
         SettingsView()
             .environmentObject(preferences)
             .environmentObject(appState)

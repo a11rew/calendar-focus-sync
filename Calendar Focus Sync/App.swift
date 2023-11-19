@@ -35,12 +35,14 @@ struct AppMain: App {
 }
 
 @MainActor
-private final class AppDelegate: NSObject, NSApplicationDelegate {
+final class AppDelegate: NSObject, NSApplicationDelegate {
     var window: NSWindow?
     
     func applicationDidFinishLaunching(_ notification: Notification) {
         // Listen for window becoming key (i.e., active)
         NotificationCenter.default.addObserver(self, selector: #selector(windowDidBecomeKey(notification:)), name: NSWindow.didBecomeKeyNotification, object: nil)
+        
+        notificationCenter.delegate = self
         
         Task {
             await SyncOrchestrator.shared.go()

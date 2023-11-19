@@ -137,6 +137,10 @@ class SyncOrchestrator {
                 activeFocusModeTimers.removeValue(forKey: event.id)
             }
             let timer = Timer.scheduledTimer(withTimeInterval: triggerDate.timeIntervalSinceNow, repeats: false, block: { _ in
+                    if self.userPreferences.notificationsAccessGranted {
+                        sendFocusBeginningNotification(event: event)
+                    }
+                
                     enableFocusMode(duration: eventDuration)
                 }
             )

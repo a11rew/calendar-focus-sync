@@ -10,6 +10,7 @@
 		4907ED502AA5C0EF000A566E /* CalendarSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4907ED4F2AA5C0EF000A566E /* CalendarSync.swift */; };
 		490D80C72ADB151800E361C1 /* calendar-focus-sync.shortcut in Resources */ = {isa = PBXBuildFile; fileRef = 490D80C62ADB151800E361C1 /* calendar-focus-sync.shortcut */; };
 		491C43832AFC3452000168EA /* SyncOrchestrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491C43822AFC3452000168EA /* SyncOrchestrator.swift */; };
+		4963BE852B0964DF0004FA7D /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4963BE842B0964DF0004FA7D /* Notifications.swift */; };
 		496FB0CD2AF6638900FE2BE8 /* SyncOrchestratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496FB0CC2AF6638900FE2BE8 /* SyncOrchestratorTests.swift */; };
 		496FB0CF2AF6640000FE2BE8 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496FB0CE2AF6640000FE2BE8 /* UserPreferences.swift */; };
 		49A566782AED6B5B0083D89A /* ShortcutInstallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A566772AED6B5B0083D89A /* ShortcutInstallView.swift */; };
@@ -49,6 +50,7 @@
 		490D80C62ADB151800E361C1 /* calendar-focus-sync.shortcut */ = {isa = PBXFileReference; lastKnownFileType = file; path = "calendar-focus-sync.shortcut"; sourceTree = "<group>"; };
 		490D80C82ADB1E0A00E361C1 /* Calendar Focus SyncRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Calendar Focus SyncRelease.entitlements"; sourceTree = "<group>"; };
 		491C43822AFC3452000168EA /* SyncOrchestrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncOrchestrator.swift; sourceTree = "<group>"; };
+		4963BE842B0964DF0004FA7D /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		496FB0CC2AF6638900FE2BE8 /* SyncOrchestratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncOrchestratorTests.swift; sourceTree = "<group>"; };
 		496FB0CE2AF6640000FE2BE8 /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		49A566772AED6B5B0083D89A /* ShortcutInstallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutInstallView.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				4907ED4F2AA5C0EF000A566E /* CalendarSync.swift */,
 				49B74B292AA8640E00C6A853 /* SyncOrchestrator.swift */,
 				49B74B2E2AADEB4200C6A853 /* Focus.swift */,
+				4963BE842B0964DF0004FA7D /* Notifications.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				49F388FE2AEAF9D600F3D9BF /* UpcomingEventsView.swift in Sources */,
 				49B74B2F2AADEB4200C6A853 /* Focus.swift in Sources */,
 				49AB0DBA2AA3AAA10047CC2E /* SettingsView.swift in Sources */,
+				4963BE852B0964DF0004FA7D /* Notifications.swift in Sources */,
 				49AB0D8D2AA3A8C80047CC2E /* App.swift in Sources */,
 				49B74B352AB1E05200C6A853 /* Shell.swift in Sources */,
 				49AB0DBC2AA4837E0047CC2E /* Constants.swift in Sources */,
