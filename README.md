@@ -44,7 +44,9 @@ When your event ends, Focus Mode will automatically deactivate. No need to remem
 
 ![Menu Bar Item](<Calendar Focus Sync/Assets.xcassets/Screenshots/menu-bar.png>)
 
-![Settings Screen](<Calendar Focus Sync/Assets.xcassets/Screenshots/settings.png>)
+![Settings Screen](<Calendar Focus Sync/Assets.xcassets/Screenshots/promo-light.png>)
+
+![Settings Screen In Dark Mode](<Calendar Focus Sync/Assets.xcassets/Screenshots/promo-dark.png>)
 
 ## License
 
