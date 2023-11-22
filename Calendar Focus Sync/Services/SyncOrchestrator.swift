@@ -75,9 +75,7 @@ class SyncOrchestrator {
     }
     
     deinit {
-        for (_, timer) in activeFocusModeTimers {
-            timer.invalidate()
-        }
+        tearDownTimers()
     }
     
     @MainActor
@@ -93,9 +91,18 @@ class SyncOrchestrator {
         }
     }
     
+    func tearDownTimers() {
+        for (_, timer) in activeFocusModeTimers {
+            timer.invalidate()
+        }
+    }
+        
     func syncCalendarEvents() async -> [CalendarEvent] {
         // Clear existing events
         await eventsHolder.clear()
+        
+        // Tear down existing timers
+        tearDownTimers()
         
         // Run handlers concurrently
         await withTaskGroup(of: [CalendarEvent].self) { group in
