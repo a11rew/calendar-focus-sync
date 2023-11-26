@@ -20,6 +20,10 @@ Requires macOS 14.0 or later.
 
 ## Download
 
+[![](https://tools.applemediaservices.com/api/badges/download-on-the-mac-app-store/black/en-us?size=250x83&releaseDate=1615852800)](https://apps.apple.com/app/id6472858223)
+
+Requires macOS 14 or later.
+
 **Non-App Store version**
 
 A DMG is available for direct installation.
