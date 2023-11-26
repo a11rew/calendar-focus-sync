@@ -130,13 +130,14 @@ class SyncOrchestrator {
     func scheduleFocusModeActivation(event: CalendarEvent) {
         // Schedules focus mode activation for a particular time
         let eventStartDate = event.startDate
-        let eventDuration = Int(event.endDate.timeIntervalSince(eventStartDate)) / 60
+        let timeBuffer = userPreferences.selectedPriorTimeBuffer * 60
         
-        let timeBuffer = userPreferences.selectedPriorTimeBuffer
-        let triggerDelta = timeBuffer * 60 * -1
+        let eventDuration = (Int(event.endDate.timeIntervalSince(eventStartDate)) + timeBuffer) / 60
         
+        let triggerDelta = timeBuffer * -1
+         
         let triggerDate = eventStartDate.addingTimeInterval(TimeInterval(triggerDelta))
-        
+                
         DispatchQueue.main.sync {
             // Check if there's an active timer for this event
             if let activeTimer = self.activeFocusModeTimers[event.id] {
