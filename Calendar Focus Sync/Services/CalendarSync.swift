@@ -48,8 +48,24 @@ class NativeCalendarSync: CalendarSyncer {
         
         // Fetch events
         let predicate = store.predicateForEvents(withStart: syncFilter.startDate, end: syncFilter.endDate, calendars: calendars)
-        let events = store.events(matching: predicate)
+        
+        let allEvents = store.events(matching: predicate)
+        
+        // Filter out all-day events
+        let events = allEvents.filter{ event in
+            let calendar = Calendar.current
 
+            // Check if the event starts at 00:00
+            let startComponents = calendar.dateComponents([.hour, .minute], from: event.startDate)
+            let isStartMidnight = startComponents.hour == 0 && startComponents.minute == 0
+        
+            // Check if the event ends at 00:00 the next day
+            let endComponents = calendar.dateComponents([.day, .hour, .minute], from: event.endDate)
+            let isEndNextDayMidnight = endComponents.hour == 0 && endComponents.minute == 0 && endComponents.day != calendar.component(.day, from: event.startDate)
+
+            return !event.isAllDay && !(isStartMidnight && isEndNextDayMidnight)
+        }
+        
         return events.map { event in
             CalendarEvent(
                 id: uniqueIDForEventInstance(event: event),
