@@ -144,6 +144,12 @@ class SyncOrchestrator {
                 activeTimer.invalidate()
                 activeFocusModeTimers.removeValue(forKey: event.id)
             }
+            
+            // If the event has already started, don't schedule a notification
+            if triggerDate.timeIntervalSinceNow < 0 {
+                return
+            }
+            
             let timer = Timer.scheduledTimer(withTimeInterval: triggerDate.timeIntervalSinceNow, repeats: false, block: { _ in
                     if self.userPreferences.notificationsAccessGranted {
                         sendFocusBeginningNotification(event: event)
