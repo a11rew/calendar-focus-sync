@@ -33,8 +33,15 @@ func runCFSShortcut(_ args: String) {
         print(MISSING_SHORTCUT_MESSAGE) // TODO: Alert user
         return
     }
-
-    runShellCommand("echo \(args) | shortcuts run \(SHORTCUT_NAME)")
+        
+    // Construct shortcut scheme url to run command in the format -> shortcuts://run-shortcut?name=[name]&input=[input]&text=[text]
+    let scheme = "shortcuts://run-shortcut"
+    let name = SHORTCUT_NAME
+    let input = args
+    let url = URL(string: "\(scheme)?name=\(name)&input=\(input)&text=")!
+    
+    // Open the shortcut
+    NSWorkspace.shared.open(url)
 }
 
 
