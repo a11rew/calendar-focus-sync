@@ -62,6 +62,7 @@ class SyncOrchestrator {
     
     var skipPermissionsCheck = false
     var activeFocusModeTimers: [String: Timer] = [:]
+    var notificationTimers: [String: Timer] = [:]
     
     init(userPreferences: UserPreferences, syncHandlers: [CalendarSyncer], skipPermissionsCheck: Bool = false) {
         self.userPreferences = userPreferences
@@ -94,6 +95,10 @@ class SyncOrchestrator {
     func tearDownTimers() {
         for (_, timer) in activeFocusModeTimers {
             timer.invalidate()
+        }
+        
+        for (_, notifTimer) in notificationTimers {
+            notifTimer.invalidate()
         }
     }
         
@@ -145,16 +150,28 @@ class SyncOrchestrator {
                 activeFocusModeTimers.removeValue(forKey: event.id)
             }
             
-            // If the event has already started, don't schedule a notification
+            // Check if there's a notification timer for this event
+            if let notificationTimer = self.notificationTimers[event.id] {
+                notificationTimer.invalidate()
+                notificationTimers.removeValue(forKey: event.id)
+            }
+            
+            // If the event has already started, don't schedule focus mode activation
             if triggerDate.timeIntervalSinceNow < 0 {
                 return
             }
             
-            let timer = Timer.scheduledTimer(withTimeInterval: triggerDate.timeIntervalSinceNow, repeats: false, block: { _ in
-                    if self.userPreferences.notificationsAccessGranted {
-                        sendFocusBeginningNotification(event: event)
-                    }
+            // Schedule notification for 1 minute before focus mode activation
+            if self.userPreferences.notificationsAccessGranted {
+                let notificationTimer = Timer.scheduledTimer(withTimeInterval: triggerDate.timeIntervalSinceNow - 60, repeats: false, block: { _ in
+                    sendFocusBeginningNotification(event: event)
+                })
                 
+                self.notificationTimers[event.id] = notificationTimer
+            }
+
+            // Schedule focus mode activation
+            let timer = Timer.scheduledTimer(withTimeInterval: triggerDate.timeIntervalSinceNow, repeats: false, block: { _ in
                     enableFocusMode(duration: eventDuration)
                 }
             )
