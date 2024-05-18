@@ -45,6 +45,10 @@ class NativeCalendarSync: CalendarSyncer {
         // Declare event fetch parameters
         // TODO: Filter for specific calendars
         let calendars = store.calendars(for: .event)
+            // Exclude excluded calendars
+            .filter { calendar in
+                !UserPreferences.shared.excludedCalendarIds.contains(calendar.calendarIdentifier)
+            }
         
         // Fetch events
         let predicate = store.predicateForEvents(withStart: syncFilter.startDate, end: syncFilter.endDate, calendars: calendars)

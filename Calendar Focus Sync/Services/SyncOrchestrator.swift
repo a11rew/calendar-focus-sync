@@ -83,6 +83,7 @@ class SyncOrchestrator {
     func go() async {
         Task { @MainActor in
             AppState.shared.calendarEvents = await syncCalendarEvents()
+            AppState.shared.calendars = store.calendars(for: .event)
         }
     }
     

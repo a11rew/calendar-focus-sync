@@ -6,7 +6,13 @@ struct SettingsView: View {
     @EnvironmentObject var userPreferences: UserPreferences
     @EnvironmentObject var appState: AppState
     
+    
+    @State private var isExpanded = false
     @State private var isRequestingCalendarPermissions = false
+    
+    private var sortedCalendars: [EKCalendar] {
+        appState.calendars.sorted { $0.title < $1.title }
+    }
     
     var body: some View {
         ScrollView {
@@ -25,7 +31,6 @@ struct SettingsView: View {
         }
    }
     
-    
     @ViewBuilder
     private var CalendarConfigView: some View {
         VStack(alignment: .leading) {
@@ -33,15 +38,42 @@ struct SettingsView: View {
             
             VStack {
                 HStack {
-                    Text("Apple Calendar")
-                    Spacer()
-                    
-                    Button(userPreferences.nativeCalendarAccessGranted
-                           ? "Granted" : "Grant Calendar Access"
-                    ) {
-                        requestCalendarPermissions()
+                    DisclosureGroup(isExpanded: $isExpanded) {
+                        VStack(spacing: 8) {
+                            ForEach(sortedCalendars, id: \.calendarIdentifier) { calendar in
+                                HStack {
+                                    Text(calendar.title)
+                                    Spacer()
+                                    Toggle("", isOn: Binding(
+                                        get: { !userPreferences.excludedCalendarIds.contains(calendar.calendarIdentifier) },
+                                        set: { isExcluded in
+                                            if !isExcluded {
+                                                userPreferences.excludedCalendarIds.append(calendar.calendarIdentifier)
+                                            } else {
+                                                userPreferences.excludedCalendarIds.removeAll { $0 == calendar.calendarIdentifier }
+                                            }
+                                        }
+                                    ))
+                                    .toggleStyle(.switch)
+                                }
+                            }
+                        }
+                        .padding(.vertical, 4)
+                    } label: {
+                        HStack {
+                            Text("Apple Calendar")
+                            
+                            Spacer()
+                            
+                            Button(userPreferences.nativeCalendarAccessGranted
+                                   ? "Granted" : "Grant Calendar Access"
+                            ) {
+                                requestCalendarPermissions()
+                            }
+                            .disabled(isRequestingCalendarPermissions || userPreferences.nativeCalendarAccessGranted)
+                        }
                     }
-                    .disabled(isRequestingCalendarPermissions || userPreferences.nativeCalendarAccessGranted)
+                    .disclosureGroupStyle(CalendarDisclosureStyle())
                 }
             }
             .padding(8)
@@ -129,5 +161,30 @@ struct SettingsViewPreview: PreviewProvider {
         SettingsView()
             .environmentObject(preferences)
             .environmentObject(appState)
+    }
+}
+
+struct CalendarDisclosureStyle: DisclosureGroupStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        VStack(alignment: .leading) {
+            Button {
+                withAnimation {
+                    configuration.isExpanded.toggle()
+                }
+            } label: {
+                HStack {
+                    Image(systemName: configuration.isExpanded ? "chevron.up" : "chevron.down")
+                        .foregroundColor(.accentColor)
+                        .font(.caption)
+                        .animation(nil, value: configuration.isExpanded)
+                    
+                    configuration.label
+                }
+            }.buttonStyle(PlainButtonStyle())
+            
+            if configuration.isExpanded {
+                configuration.content
+            }
+        }
     }
 }
